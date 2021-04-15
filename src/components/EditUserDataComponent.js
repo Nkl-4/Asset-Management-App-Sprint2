@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
 import NavBarComponent from './NavBarComponent';
 import { withRouter } from "react-router-dom";
+import * as userActions from "../store/actions/UserAction";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 class EditUserDataComponent extends Component {
   constructor(props) {
@@ -23,18 +25,17 @@ class EditUserDataComponent extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let id = this.props.match.params.id;
-    const user = {
-      userId: id,  
+    const { userActions, match } = this.props;
+
+    const payload = {
+      userId: match.params.id,  
       userName: this.state.userName,
       userPassword: this.state.userPassword,
       userType: this.state.userType,
     };
-    Axios.put("http://localhost:8090/admin/users/modify/"+ user.userId, user).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
-    this.props.history.push("/usersList");
+
+    userActions.editUser(payload);
+    window.location.href = "/usersList";
   }
 
   render() {
@@ -104,4 +105,17 @@ class EditUserDataComponent extends Component {
 }
 
 
-export default withRouter(EditUserDataComponent)
+function mapStateToProps(state) {
+  return { user: state.userReducer.user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EditUserDataComponent));

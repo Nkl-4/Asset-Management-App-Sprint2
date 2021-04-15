@@ -1,7 +1,9 @@
 import React from 'react';
-import Axios from "axios";
 import "../index.css"
 import { withRouter } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as userActions from "../store/actions/UserAction";
 
 class UserSignUpForm extends React.Component {
     constructor() {
@@ -24,13 +26,13 @@ class UserSignUpForm extends React.Component {
   handleSubmit (event) {
       event.preventDefault();
 
-      const user = {
+      const payload = {
           userName: this.state.userName,
           userPassword: this.state.userPassword,
           userType: this.state.userType
       };
-      Axios.post("http://localhost:8090/admin/users", user).then(res => {console.log(res);
-      console.log(res.data);})
+      const { userActions } = this.props;
+      userActions.createUser(payload);
       this.props.history.push("/");
   }
 
@@ -96,5 +98,18 @@ class UserSignUpForm extends React.Component {
   }
 }
 
-export default withRouter(UserSignUpForm);
+function mapStateToProps(state) {
+  return { users: state.userReducer.newUser };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(UserSignUpForm));
 

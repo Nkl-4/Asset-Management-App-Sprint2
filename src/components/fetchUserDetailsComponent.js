@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import NavBarComponent from './NavBarComponent';
-
-export default class fetchUserDetailsComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { user: {} };
-  }
+import * as userActions from "../store/actions/UserAction";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+class fetchUserDetailsComponent extends Component {
 
   componentDidMount() {
-    // eslint-disable-next-line react/prop-types
-    const id = this.props.match.params.id;
-    axios
-      .get('http://localhost:8090/admin/users/get/' + id)
-      .then((response) => {
-        const users = response.data;
-        this.setState({ user: users });
-      });
+
+    const {userActions, match } = this.props;
+    userActions.fetchUserById(match.params.id);
   }
 
   render() {
-    return this.state.user !== undefined ? (
+    const { user } = this.props;
+    return user !== undefined ? (
       <div>
         <NavBarComponent />
         <div className="container d-flex">
@@ -40,11 +33,11 @@ export default class fetchUserDetailsComponent extends Component {
             </thead>
             <tbody>
               {
-                <tr key={this.state.user.userId}>
-                  <td>{this.state.user.userId}</td>
-                  <td>{this.state.user.userName}</td>
-                  <td>{this.state.user.userPassword}</td>
-                  <td>{this.state.user.userType}</td>
+                <tr key={user.userId}>
+                  <td>{user.userId}</td>
+                  <td>{user.userName}</td>
+                  <td>{user.userPassword}</td>
+                  <td>{user.userType}</td>
                   <td>
                     <button
                       type="button"
@@ -52,10 +45,10 @@ export default class fetchUserDetailsComponent extends Component {
                     >
                       <Link
                         to={{
-                          pathname: `/modifyUser/${this.state.user.userId}`,
-                          userName: this.state.user.userName,
-                          userPassword: this.state.user.userPassword,
-                          userType: this.state.user.userType,
+                          pathname: `/modifyUser/${user.userId}`,
+                          userName: user.userName,
+                          userPassword: user.userPassword,
+                          userType: user.userType,
                         }}
                       >
                         Edit
@@ -73,3 +66,18 @@ export default class fetchUserDetailsComponent extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { user: state.userReducer.user };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(fetchUserDetailsComponent);

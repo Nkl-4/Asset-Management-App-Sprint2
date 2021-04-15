@@ -1,5 +1,5 @@
 import React from 'react';
-import FetchData from './FetchDataFromAPI';
+import GetAllUsersComponent from './GetAllUsersComponent';
 import NavBarComponent from './NavBarComponent';
 
 export default function UsersListComponent() {
@@ -7,7 +7,7 @@ export default function UsersListComponent() {
     <div>
       <h2>User DB</h2>
       <NavBarComponent />
-      <FetchData />
+      <GetAllUsersComponent />
     </div>
   );
 }
