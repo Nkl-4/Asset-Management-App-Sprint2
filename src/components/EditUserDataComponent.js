@@ -41,6 +41,7 @@ class EditUserDataComponent extends Component {
   render() {
      return (
        <div>
+         <h2>Modify User Data</h2>
          <NavBarComponent />
          <div className="d-flex justify-content-center align-items-center">
            <form

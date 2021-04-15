@@ -16,8 +16,9 @@ class fetchUserDetailsComponent extends Component {
     const { user } = this.props;
     return user !== undefined ? (
       <div>
+        <h2>User Data</h2>
         <NavBarComponent />
-        <div className="container d-flex">
+        <div className="container d-flex justify-content-center align-items-center">
           <table
             className="table table-striped table-sm felx-d justify-content-center align-items-center w-50 p-3"
             border="1"

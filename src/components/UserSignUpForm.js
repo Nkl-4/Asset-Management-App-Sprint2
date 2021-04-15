@@ -40,7 +40,7 @@ class UserSignUpForm extends React.Component {
     return (
       <div className="signup-box  d-flex justify-content-center">
         <form
-          className="justify-content-center border  w-25 p-3"
+          className="justify-content-center border w-25 p-3"
           onSubmit={this.handleSubmit}
           method="post"
         >
