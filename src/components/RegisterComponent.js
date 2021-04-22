@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBarComponent from './NavBarComponent';
 import UserSignUpForm from './UserSignUpForm';
 
 export class RegisterComponent extends Component {
@@ -7,7 +6,6 @@ export class RegisterComponent extends Component {
     return (
       <div>
         <h2>Registration Page</h2>
-        <NavBarComponent />
         <UserSignUpForm />
       </div>
     );

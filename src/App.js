@@ -1,11 +1,15 @@
-import Routes from "./Routes";
-
+import { BrowserRouter } from 'react-router-dom';
+import NavBarComponent from './components/NavBarComponent';
+import Routes from './Routes';
 
 function App() {
   return (
-    <div className="container-fluid App">
-      <Routes />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBarComponent />
+        <Routes />
+      </div>
+    </BrowserRouter>
   );
 }
 

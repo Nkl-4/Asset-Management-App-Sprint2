@@ -1,12 +1,12 @@
-import Axios from "axios";
+import Axios from 'axios';
 
 // API URL
-const apiUrl = "http://localhost:8090";
+const apiUrl = 'http://localhost:8090';
 
 // Sync Action
 export const fetchAllUsersSuccess = (users) => {
   return {
-    type: "FETCH_ALL_USERS_SUCCESS",
+    type: 'FETCH_ALL_USERS_SUCCESS',
     users,
   };
 };
@@ -17,7 +17,7 @@ export const fetchAllUsers = () => {
   // that dispatches an action at a later time
   return (dispatch) => {
     // Returns a promise
-    return Axios.get(apiUrl + "/admin/users/get/all")
+    return Axios.get(apiUrl + '/admin/users/get/all')
       .then((resp) => {
         // Dispatch another action
         // to consume data
@@ -31,16 +31,16 @@ export const fetchAllUsers = () => {
 
 export const fetchUserByIdSuccess = (user) => {
   return {
-    type: "FETCH_USER_BY_ID_SUCCESS",
+    type: 'FETCH_USER_BY_ID_SUCCESS',
     payload: user,
   };
 };
 
 export const fetchUserById = (userId) => {
   return (dispatch) => {
-    return Axios.get(apiUrl + "/admin/users/get/" + userId)
+    return Axios.get(apiUrl + '/admin/users/get/' + userId)
       .then((resp) => {
-        console.log(resp.data)
+        console.log(resp.data);
         dispatch(fetchUserByIdSuccess(resp.data));
       })
       .catch((error) => {
@@ -51,7 +51,7 @@ export const fetchUserById = (userId) => {
 
 export const createUserSuccess = (user) => {
   return {
-    type: "CREATE_USER_SUCCESS",
+    type: 'CREATE_USER_SUCCESS',
     payload: user,
   };
 };
@@ -64,7 +64,7 @@ export const createUser = (payload) => {
   };
 
   return (dispatch) => {
-    return Axios.post(apiUrl + "/admin/users", data)
+    return Axios.post(apiUrl + '/admin/users', data)
       .then((response) => {
         dispatch(createUserSuccess(response.data));
       })
@@ -72,11 +72,11 @@ export const createUser = (payload) => {
         throw error;
       });
   };
-}
+};
 
 export const editUserSuccess = (user) => {
   return {
-    type: "CREATE_USER_SUCCESS",
+    type: 'CREATE_USER_SUCCESS',
     payload: user,
   };
 };
@@ -89,12 +89,52 @@ export const editUser = (payload) => {
   };
 
   return (dispatch) => {
-    return Axios.put(apiUrl + "/admin/users/modify/" + payload.userId, data)
+    return Axios.put(apiUrl + '/admin/users/modify/' + payload.userId, data)
       .then((response) => {
         dispatch(editUserSuccess(response.data));
       })
       .catch((error) => {
         throw error;
+      });
+  };
+};
+
+export const loginSuccess = (user) => {
+  localStorage.clear();
+  localStorage.user_id = user.userName;
+  localStorage.user_type = user.userType;
+
+  // redirection
+  if (user.userType !== undefined) {
+    if (user.userType === 'ADMIN') window.location.href = '/admin/home';
+    else if (user.userType === 'GUSER') window.location.href = '/user/home';
+    else if (user.userType === 'WHMGR') window.location.href = '/manager/home';
+  }
+  return {
+    type: 'LOGIN_SUCCESS',
+  };
+};
+
+export const loginFailure = () => {
+  return {
+    type: 'LOGIN_FAILURE',
+  };
+};
+
+export const doLogin = (payload) => {
+  let data = {
+    userName: payload.username,
+    userPassword: payload.password,
+  };
+  return (dispatch) => {
+    return Axios.post(apiUrl + '/admin/login', data)
+      .then((response) => {
+        console.log(response.data);
+        dispatch(loginSuccess(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch(loginFailure());
       });
   };
 };

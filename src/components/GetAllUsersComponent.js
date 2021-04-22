@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import * as userActions from "../store/actions/UserAction";
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as userActions from '../store/actions/UserAction';
 
 class GetAllUsersComponent extends Component {
-  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super();
   }
@@ -19,7 +17,6 @@ class GetAllUsersComponent extends Component {
       <div className="container">
         <table
           className="table table-striped table-sm5  table-hover "
-          // @ts-ignore
           border="1"
         >
           <thead className="thead-dark">
@@ -38,21 +35,24 @@ class GetAllUsersComponent extends Component {
                   <td>{user.userName}</td>
                   <td>{user.userType}</td>
                   <td>
-                    <button
-                      type="button"
-                      className="btn btn-outline-info btn-sm"
-                    >
-                      <Link to={`/getUserByid/${user.userId}`}>View</Link>
-                    </button>{" "}
+                    <a href={`/getUserByid/${user.userId}`}>
+                      <button
+                        type="button"
+                        className="btn btn-outline-info btn-sm"
+                      >
+                        View
+                      </button>
+                    </a>
                     &nbsp; &nbsp;
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm"
-                    >
-                      <Link to={`/deleteUser/${user.userId}`}>Delete</Link>{" "}
-                      &nbsp;
-                    </button>
-                    &nbsp;
+                    <a href={`/deleteUser/${user.userId}`}>
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                        disabled={user.userType === 'ADMIN' ? true : false}
+                      >
+                        Delete
+                      </button>
+                    </a>
                   </td>
                 </tr>
               ))}

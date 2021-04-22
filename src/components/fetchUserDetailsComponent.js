@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavBarComponent from './NavBarComponent';
-import * as userActions from "../store/actions/UserAction";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import * as userActions from '../store/actions/UserAction';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 class fetchUserDetailsComponent extends Component {
-
   componentDidMount() {
-
-    const {userActions, match } = this.props;
+    const { userActions, match } = this.props;
     userActions.fetchUserById(match.params.id);
   }
 
@@ -17,7 +14,6 @@ class fetchUserDetailsComponent extends Component {
     return user !== undefined ? (
       <div>
         <h2>User Data</h2>
-        <NavBarComponent />
         <div className="container d-flex justify-content-center align-items-center">
           <table
             className="table table-striped table-sm felx-d justify-content-center align-items-center w-50 p-3"
@@ -40,21 +36,21 @@ class fetchUserDetailsComponent extends Component {
                   <td>{user.userPassword}</td>
                   <td>{user.userType}</td>
                   <td>
-                    <button
-                      type="button"
-                      className="btn btn-outline-secondary btn-sm"
+                    <Link
+                      to={{
+                        pathname: `/modifyUser/${user.userId}`,
+                        userName: user.userName,
+                        userPassword: user.userPassword,
+                        userType: user.userType,
+                      }}
                     >
-                      <Link
-                        to={{
-                          pathname: `/modifyUser/${user.userId}`,
-                          userName: user.userName,
-                          userPassword: user.userPassword,
-                          userType: user.userType,
-                        }}
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-sm"
                       >
                         Edit
-                      </Link>
-                    </button>
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               }
