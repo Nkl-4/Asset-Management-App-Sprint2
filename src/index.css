@@ -1,3 +1,31 @@
 .navbar a:hover {
   color: #f1356d;
 }
+
+#link_card {
+  margin-left: 5rem;
+  width: 15rem;
+  max-height: 5rem;
+  margin-top: 5rem;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  text-align: center;
+}
+
+.navbar ul.active {
+  background-color: #4CAF50;
+  color: rgb(0, 0, 0);
+}
+
+#link_card:hover {
+  color: #f1356d;
+  border: double;
+  box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0.0);
+}
+
+body {
+  background-color: rgba(109, 109, 109, 0.589);
+}
+
+tbody {
+  background-color:white;
+}

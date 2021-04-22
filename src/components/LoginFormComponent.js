@@ -16,6 +16,18 @@ class LoginFormComponent extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.loginAction = this.loginAction.bind(this);
   }
+  componentDidMount() {
+    let currentUser = localStorage.getItem('user_type');
+
+    if (currentUser !== undefined) {
+      if (currentUser === 'ADMIN')
+        return (window.location.href = '/admin/home');
+      else if (currentUser === 'GUSER')
+        return (window.location.href = '/user/home');
+      else if (currentUser === 'WHMGR')
+        return (window.location.href = '/manager/home');
+    }
+  }
 
   handleChange(event) {
     this.setState({
@@ -33,17 +45,6 @@ class LoginFormComponent extends Component {
   }
 
   render() {
-    let currentUser = localStorage.getItem('user_type');
-
-    if (currentUser !== undefined) {
-      if (currentUser === 'ADMIN')
-        return (window.location.href = '/admin/home');
-      else if (currentUser === 'GUSER')
-        return (window.location.href = '/user/home');
-      else if (currentUser === 'WHMGR')
-        return (window.location.href = '/manager/home');
-    }
-
     return (
       <div className="d-flex justify-content-center align-items-center">
         <form className=" p-2 border w-20 p-3" onSubmit={this.loginAction}>

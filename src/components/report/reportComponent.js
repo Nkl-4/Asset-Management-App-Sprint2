@@ -30,7 +30,7 @@ export default function ReportComponent() {
               type="month"
               name="reportDate"
               id="rd"
-              className="form-control col-auto"
+              className="form-control col-auto my-4"
               onChange={(event) => getData(event.target.value)}
             />
           </div>
@@ -73,7 +73,9 @@ export default function ReportComponent() {
               ))}
             </table>
           ) : (
-            <h3>No Data</h3>
+            <h4 className="mx-auto" style={{ width: '200px' }}>
+              No Data
+            </h4>
           )}
         </div>
       </div>

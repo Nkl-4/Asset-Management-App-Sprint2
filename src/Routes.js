@@ -12,11 +12,19 @@ import UserComponent from './components/userComponent';
 import ManagerComponent from './components/managerComponent';
 import userSignOut from './components/user/userSignOut';
 import ReportComponent from './components/report/reportComponent';
+import UserHomePageSwitcher from './components/userHomePageSwitcher';
+import NotAuthorizedPage from './components/notAuthorizedPage';
+
+var currentUser = localStorage.getItem('user_type');
 
 const Routes = () => (
   <Switch>
     <Route path="/" component={LandingComponent} exact />
+
     <Route path="/login" component={LoginComponent} />
+    <Route path="/signout" component={userSignOut} />
+    <Route path="/homeRedirect" component={UserHomePageSwitcher} />
+
     <Route path={`/register`} component={RegisterComponent} />
     <Route path="/usersList" component={UsersListComponent} />
     <Route path={`/getUserByid/:id`} component={fetchUserDetailsComponent} />
@@ -25,10 +33,12 @@ const Routes = () => (
       path={`/modifyUser/:id`}
       render={(props) => <EditUserDataComponent {...props} />}
     />
-    <Route path="/admin/home" component={AdminComponent} />
+    <Route path="/admin/home">
+      {currentUser === 'ADMIN' ? <AdminComponent /> : <NotAuthorizedPage />}
+    </Route>
     <Route path="/user/home" component={UserComponent} />
     <Route path="/manager/home" component={ManagerComponent} />
-    <Route path="/signout" component={userSignOut} />
+
     <Route path="/report" component={ReportComponent} />
   </Switch>
 );

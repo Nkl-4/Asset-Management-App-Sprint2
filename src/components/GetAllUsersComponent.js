@@ -2,19 +2,45 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../store/actions/UserAction';
+import Axios from 'axios';
+import { Alert } from 'react-bootstrap';
 
 class GetAllUsersComponent extends Component {
   constructor() {
     super();
+    this.state = {
+      visible: false,
+    };
+    this.handleDeleteUser = this.handleDeleteUser.bind(this);
   }
 
   componentDidMount() {
     this.props.userActions.fetchAllUsers();
   }
 
+  handleAlert() {
+    this.setState({ visible: true }, () => {
+      window.setTimeout(() => {
+        this.setState({ visible: false });
+      }, 4000);
+    });
+  }
+
+  handleDeleteUser(userId) {
+    Axios.delete('http://localhost:8090/admin/users/delete/' + userId).then(
+      (response) => {
+        console.log(response.data);
+      }
+    );
+    location.reload();
+  }
+
   render() {
     return (
       <div className="container">
+        <Alert variant={'success'} show={this.state.visible}>
+          User Deleted
+        </Alert>
         <table
           className="table table-striped table-sm5  table-hover "
           border="1"
@@ -44,15 +70,14 @@ class GetAllUsersComponent extends Component {
                       </button>
                     </a>
                     &nbsp; &nbsp;
-                    <a href={`/deleteUser/${user.userId}`}>
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger btn-sm"
-                        disabled={user.userType === 'ADMIN' ? true : false}
-                      >
-                        Delete
-                      </button>
-                    </a>
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger btn-sm"
+                      onClick={() => this.handleDeleteUser(user.userId)}
+                      disabled={user.userType === 'ADMIN' ? true : false}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

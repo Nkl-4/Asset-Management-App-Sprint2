@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Axios from 'axios';
+import { Redirect } from 'react-router';
 
 export default function DeleteUserByIdComponent(props) {
   useEffect(() => {
@@ -13,7 +14,6 @@ export default function DeleteUserByIdComponent(props) {
         console.log(response.data);
       }
     );
-    window.location.href = '/usersList';
   };
-  return <></>;
+  return <Redirect to="/usersList" />;
 }
