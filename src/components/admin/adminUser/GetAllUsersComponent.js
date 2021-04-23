@@ -32,7 +32,7 @@ class GetAllUsersComponent extends Component {
         console.log(response.data);
       }
     );
-    location.reload();
+    this.props.userActions.fetchAllUsers();
   }
 
   render() {

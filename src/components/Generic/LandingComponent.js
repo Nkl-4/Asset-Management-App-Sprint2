@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
+import * as $ from 'jquery';
 import image1 from '../../img/hp_bg_1.jpg';
 import image2 from '../../img/hp_bg_2.jpg';
 import image3 from '../../img/hp_bg_3.jpg';
 export class LandingComponent extends Component {
   render() {
+    let ht = $(window).height();
+    let wh = $(window).width();
     return (
       <div className="container-fluid">
         <div className="row">
-          <Carousel className="border w-100 col-xs-12">
+          <Carousel className="border col-xs-12">
             <Carousel.Item>
               <img
                 className="d-block"
                 src={image1}
                 alt="First slide"
-                height={520}
-                width={1370}
+                height={ht * 0.85}
+                width={wh}
               />
               <Carousel.Caption style={{ color: 'black' }}>
                 <h3>Assets</h3>
@@ -27,8 +30,8 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image2}
                 alt="Second slide"
-                height={520}
-                width={1370}
+                height={ht * 0.85}
+                width={wh}
               />
               <Carousel.Caption>
                 <h3>Warehouses</h3>
@@ -40,8 +43,8 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image3}
                 alt="Third slide"
-                height={520}
-                width={1370}
+                height={ht * 0.85}
+                width={wh}
               />
               <Carousel.Caption>
                 <h3>Shipments</h3>

@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-#link_card h4{
+#link_card h4 {
   margin-top: 20%;
 }
 
@@ -23,6 +23,7 @@
 
 body {
   background-color: rgba(109, 109, 109, 0.589);
+  overflow: hidden;
 }
 
 tbody {
@@ -46,8 +47,8 @@ tbody {
   border: 2px solid rgba(0, 0, 0, 0.568);
   padding: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  border-radius:10px;
-  width:100%;
+  border-radius: 10px;
+  width: 100%;
   margin-top: 1cm;
 }
 
@@ -56,27 +57,27 @@ tbody {
   border: 2px solid rgba(0, 0, 0, 0.568);
   padding: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  border-radius:10px;
-  width:100%;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .login-card button {
- margin: 20px;
- line-height: 50px;
- min-width: 150px;
- text-align: center;
- font-family: Arial, sans-serif;
- background-color: #201e1e;
- border-radius: 5px;
- color: #fff;
- border: 0;
- cursor: pointer;
- box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
- transition: background-color 0.3s ease-in-out;
+  margin: 20px;
+  line-height: 50px;
+  min-width: 150px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #201e1e;
+  border-radius: 5px;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .login-card button:hover {
- background-color: #FE712A;
+  background-color: #fe712a;
 }
 
 .signup-card {
@@ -90,8 +91,8 @@ tbody {
   border: 2px solid rgba(0, 0, 0, 0.568);
   padding: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  border-radius:10px;
-  width:100%;
+  border-radius: 10px;
+  width: 100%;
   margin-top: 1cm;
 }
 
@@ -99,8 +100,8 @@ tbody {
   border: 2px solid rgba(0, 0, 0, 0.568);
   padding: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  border-radius:10px;
-  width:100%;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .signup-card select {
@@ -108,6 +109,13 @@ tbody {
   border: 2px solid rgba(0, 0, 0, 0.568);
   padding: 5px;
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-  border-radius:10px;
-  width:100%;
+  border-radius: 10px;
+  width: 100%;
+}
+
+#admin-comp {
+  background-color: #201e1e;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
