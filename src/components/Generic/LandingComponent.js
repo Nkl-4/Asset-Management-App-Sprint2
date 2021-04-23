@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
-import image1 from '../img/hp_bg_1.jpg';
-import image2 from '../img/hp_bg_2.jpg';
-import image3 from '../img/hp_bg_3.jpg';
+import image1 from '../../img/hp_bg_1.jpg';
+import image2 from '../../img/hp_bg_2.jpg';
+import image3 from '../../img/hp_bg_3.jpg';
 export class LandingComponent extends Component {
   render() {
     return (

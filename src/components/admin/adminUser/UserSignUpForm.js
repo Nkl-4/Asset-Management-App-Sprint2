@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
-import * as userActions from '../store/actions/UserAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as userActions from '../../../store/actions/AdminUserAction';
 
-class EditUserDataComponent extends Component {
-  constructor(props) {
-    super(props);
+class UserSignUpForm extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      userName: this.props.location.userName,
-      userPassword: this.props.location.userPassword,
+      userName: '',
+      userPassword: '',
       userType: 'GUSER',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -24,57 +24,56 @@ class EditUserDataComponent extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { userActions, match } = this.props;
 
     const payload = {
-      userId: match.params.id,
       userName: this.state.userName,
       userPassword: this.state.userPassword,
       userType: this.state.userType,
     };
-
-    userActions.editUser(payload);
-    window.location.href = '/usersList';
+    const { userActions } = this.props;
+    userActions.createUser(payload);
+    this.props.history.push('/homeRedirect');
   }
 
   render() {
     return (
-      <div>
-        <h2>Modify User Data</h2>
-        <div className="d-flex justify-content-center align-items-center">
-          <form
-            className="align-items-center justify-content-center border w-25 p-3"
-            onSubmit={this.handleSubmit}
-            method="post"
-          >
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: '500px' }}
+      >
+        <div className="card form-group row signup-card">
+          <form onSubmit={this.handleSubmit} method="post">
             <fieldset>
               <div className="col-auto">
                 <label htmlFor="userName">
-                  Username
                   <input
                     className="input-group from-group "
                     type="text"
                     name="userName"
-                    value={this.state.userName}
+                    placeholder="Username"
                     onChange={this.handleChange}
+                    pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                    title="Min 5 character"
+                    required
                   />
                 </label>
               </div>
               <div className="col-auto">
                 <label htmlFor="userPassword">
-                  Password
                   <input
-                    type="text"
                     className="input-group from-group "
+                    type="text"
                     name="userPassword"
-                    value={this.state.userPassword}
+                    placeholder="Password"
                     onChange={this.handleChange}
+                    pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                    title="Min 5 character"
+                    required
                   />
                 </label>
               </div>
               <div className="col-auto">
                 <label htmlFor="userType">
-                  User Type
                   <select
                     className="form-control"
                     name="userType"
@@ -92,7 +91,7 @@ class EditUserDataComponent extends Component {
                   value="Submit"
                   className="btn btn-primary mb-3"
                 >
-                  Modify
+                  Sign Up
                 </button>
               </div>
             </fieldset>
@@ -104,7 +103,7 @@ class EditUserDataComponent extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.userReducer.user };
+  return { users: state.userReducer.newUser };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -116,4 +115,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(EditUserDataComponent));
+)(withRouter(UserSignUpForm));

@@ -1,16 +1,15 @@
-import React from 'react';
-import '../index.css';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import * as userActions from '../../../store/actions/AdminUserAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../store/actions/UserAction';
 
-class UserSignUpForm extends React.Component {
-  constructor() {
-    super();
+class EditUserDataComponent extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      userName: '',
-      userPassword: '',
+      userName: this.props.location.userName,
+      userPassword: this.props.location.userPassword,
       userType: 'GUSER',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -25,23 +24,26 @@ class UserSignUpForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const { userActions, match } = this.props;
 
     const payload = {
+      userId: match.params.id,
       userName: this.state.userName,
       userPassword: this.state.userPassword,
       userType: this.state.userType,
     };
-    const { userActions } = this.props;
-    userActions.createUser(payload);
-    this.props.history.push('/');
+
+    userActions.editUser(payload);
+    window.location.href = '/usersList';
   }
 
   render() {
     return (
-      <div className="container">
+      <div>
+        <h2>Modify User Data</h2>
         <div className="d-flex justify-content-center align-items-center">
           <form
-            className="p-2 border w-20 p-3"
+            className="align-items-center justify-content-center border w-25 p-3"
             onSubmit={this.handleSubmit}
             method="post"
           >
@@ -53,6 +55,7 @@ class UserSignUpForm extends React.Component {
                     className="input-group from-group "
                     type="text"
                     name="userName"
+                    value={this.state.userName}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -61,9 +64,10 @@ class UserSignUpForm extends React.Component {
                 <label htmlFor="userPassword">
                   Password
                   <input
-                    className="input-group from-group "
                     type="text"
+                    className="input-group from-group "
                     name="userPassword"
+                    value={this.state.userPassword}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -88,7 +92,7 @@ class UserSignUpForm extends React.Component {
                   value="Submit"
                   className="btn btn-primary mb-3"
                 >
-                  Sign Up
+                  Modify
                 </button>
               </div>
             </fieldset>
@@ -100,7 +104,7 @@ class UserSignUpForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { users: state.userReducer.newUser };
+  return { user: state.userReducer.user };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -112,4 +116,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(UserSignUpForm));
+)(withRouter(EditUserDataComponent));

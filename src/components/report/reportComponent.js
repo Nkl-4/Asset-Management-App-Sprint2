@@ -37,10 +37,7 @@ export default function ReportComponent() {
         </div>
         <div className="col2">
           {data.length > 0 ? (
-            <table
-              className="table table-striped table-sm5  table-hover"
-              border="1"
-            >
+            <table className="table table-striped table-sm5  table-hover">
               <thead className="thead-dark">
                 <tr>
                   <th>Shipment ID</th>

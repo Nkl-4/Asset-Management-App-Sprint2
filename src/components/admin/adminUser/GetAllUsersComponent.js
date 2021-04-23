@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../store/actions/UserAction';
+import * as userActions from '../../../store/actions/AdminUserAction';
 import Axios from 'axios';
 import { Alert } from 'react-bootstrap';
 

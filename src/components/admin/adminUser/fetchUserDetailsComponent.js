@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import * as userActions from '../store/actions/UserAction';
+import * as userActions from '../../../store/actions/AdminUserAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 class fetchUserDetailsComponent extends Component {

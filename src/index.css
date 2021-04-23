@@ -5,21 +5,20 @@
 #link_card {
   margin-left: 5rem;
   width: 15rem;
-  max-height: 5rem;
+  height: 10rem;
   margin-top: 5rem;
-  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
-.navbar ul.active {
-  background-color: #4CAF50;
-  color: rgb(0, 0, 0);
+#link_card h4{
+  margin-top: 20%;
 }
 
 #link_card:hover {
   color: #f1356d;
   border: double;
-  box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0.0);
+  box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0);
 }
 
 body {
@@ -27,5 +26,88 @@ body {
 }
 
 tbody {
-  background-color:white;
+  background-color: white;
+}
+
+#footerBox a {
+  display: flex;
+  color: #f1356d;
+}
+
+.login-card {
+  width: 20%;
+  height: 70%;
+  box-shadow: 0 6px 10px rgb(0, 0, 0), 0 0 6px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.login-card input[type='text'] {
+  margin: 10px 0;
+  border: 2px solid rgba(0, 0, 0, 0.568);
+  padding: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius:10px;
+  width:100%;
+  margin-top: 1cm;
+}
+
+.login-card input[type='password'] {
+  margin: 10px 0;
+  border: 2px solid rgba(0, 0, 0, 0.568);
+  padding: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius:10px;
+  width:100%;
+}
+
+.login-card button {
+ margin: 20px;
+ line-height: 50px;
+ min-width: 150px;
+ text-align: center;
+ font-family: Arial, sans-serif;
+ background-color: #201e1e;
+ border-radius: 5px;
+ color: #fff;
+ border: 0;
+ cursor: pointer;
+ box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+ transition: background-color 0.3s ease-in-out;
+}
+
+.login-card button:hover {
+ background-color: #FE712A;
+}
+
+.signup-card {
+  width: 20%;
+  height: 70%;
+  box-shadow: 0 6px 10px rgb(0, 0, 0), 0 0 6px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.signup-card input[type='text'] {
+  border: 2px solid rgba(0, 0, 0, 0.568);
+  padding: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius:10px;
+  width:100%;
+  margin-top: 1cm;
+}
+
+.signup-card input[type='password'] {
+  border: 2px solid rgba(0, 0, 0, 0.568);
+  padding: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius:10px;
+  width:100%;
+}
+
+.signup-card select {
+  margin-top: 1cm;
+  border: 2px solid rgba(0, 0, 0, 0.568);
+  padding: 5px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius:10px;
+  width:100%;
 }
