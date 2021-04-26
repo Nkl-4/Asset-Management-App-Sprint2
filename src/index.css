@@ -23,7 +23,7 @@
 
 body {
   background-color: rgba(109, 109, 109, 0.589);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 tbody {

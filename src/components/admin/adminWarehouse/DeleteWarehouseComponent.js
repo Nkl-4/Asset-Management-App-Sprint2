@@ -5,12 +5,6 @@ import { connect } from 'react-redux';
 import * as warehouseActions from '../../../store/actions/WarehouseActions';
 
 class DeleteWarehouseComponent extends React.Component {
-  // constructor() {
-  //     super();
-  //     this.state = {
-  //         user: {}
-  //     }
-  // }
   componentDidMount() {
     const { warehouseActions, match } = this.props;
     warehouseActions.fetchDeleteWarehouse(match.params.id);

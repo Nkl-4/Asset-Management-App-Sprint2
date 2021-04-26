@@ -1,36 +1,40 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as shipmentActions from '../../../store/actions/ShipmentAction';
+import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction';
 
-class ShipmentStatusUpdate extends React.Component {
+class ManagerShipmentStatusUpdate extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
     shipmentActions.ShipmentUpdateStatus(match.params.id);
+    this.props.shipmentActions.fetchAllShipment();
   }
   render() {
+    // eslint-disable-next-line no-unused-vars
     const { shipments } = this.props;
     return (
       <div>
         <h4>Do you want to change the Shipment Status ?</h4>
         <h6>To DELIVERED</h6>
-        <button onClick="window.location.href = '/shipment/status/update/${shipment.shipmentId}'">
+        <button onClick="window.location.href = '/manager/shipment/status/update/${shipment.shipmentId}' ">
           Update
-          {this.props.history.push('/admin/shipment/all')}
-          {/* return <Redirect to='/shipment/all'/> */}
+          {this.props.history.push('/manager/shipment/all')}
         </button>
         <span> </span>
-        <button onClick="window.location.href = '/admin/shipment/all';">
+        <button onClick="window.location.href = '/manager/shipment/all';">
           Cancel
         </button>
       </div>
+      // window.location.href = "/shipment/all"   <Link to={`/shipment/status/update/${shipment.shipmentId}`}>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { shipments: state.shipmentReducer.shipmentStatus };
+  return {
+    shipments: state.managershipmentReducer.shipmentStatus,
+    shipment: state.managershipmentReducer.shipment,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -42,4 +46,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ShipmentStatusUpdate);
+)(ManagerShipmentStatusUpdate);

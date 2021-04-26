@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as assetActions from '../../../store/actions/Admin_AssetActions';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 
 class GetAssetByIdComponent extends Component {
   componentDidMount() {
@@ -17,43 +12,67 @@ class GetAssetByIdComponent extends Component {
   render() {
     const { asset } = this.props;
     return (
-      <div>
-        {asset !== undefined ? (
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Asset Id</TableCell>
-                  <TableCell>Warehouse Id</TableCell>
-                  <TableCell>Manager Id</TableCell>
-                  <TableCell>Location</TableCell>
-                  <TableCell>Sub Location</TableCell>
-                  <TableCell>State</TableCell>
-                  <TableCell>Country</TableCell>
-                  <TableCell>Model</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Manufacturer</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow>
-                  <TableCell>{asset.assetId}</TableCell>
-                  <TableCell>{asset.warehouse.whId}</TableCell>
-                  <TableCell>{asset.warehouse.mgrId}</TableCell>
-                  <TableCell>{asset.warehouse.address.location}</TableCell>
-                  <TableCell>{asset.warehouse.address.subLocation}</TableCell>
-                  <TableCell>{asset.warehouse.address.state}</TableCell>
-                  <TableCell>{asset.warehouse.address.country}</TableCell>
-                  <TableCell>{asset.model}</TableCell>
-                  <TableCell>{asset.type}</TableCell>
-                  <TableCell>{asset.manufacturer}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-        ) : (
-          <h3>Loading....</h3>
-        )}
+      <div className="AssetListComponent">
+        <div className="container-fluid">
+          <br></br>
+          <br></br>
+          <center>
+            <h3
+              style={{
+                backgroundColor: 'rgba(25, 55, 77)',
+                width: '200px',
+                color: 'white',
+              }}
+            >
+              {' '}
+              ASSET DETAILS
+            </h3>
+          </center>
+          <br></br>
+          {asset !== undefined ? (
+            <table className="table table-striped table table-bordered table table-hover">
+              <thead className="thead-dark">
+                <tr>
+                  <th>Asset Id</th>
+                  <th>Warehouse Id</th>
+                  <th>Manager Id</th>
+                  <th>Location</th>
+                  <th>Sub Location</th>
+                  <th>State</th>
+                  <th>Country</th>
+                  <th>Model</th>
+                  <th>Type</th>
+                  <th>Manufacturer</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  <tr>
+                    <td>{asset.assetId}</td>
+                    <td>{asset.warehouse.whId}</td>
+                    <td>{asset.warehouse.mgrId}</td>
+                    <td>{asset.warehouse.address.location}</td>
+                    <td>{asset.warehouse.address.subLocation}</td>
+                    <td>{asset.warehouse.address.state}</td>
+                    <td>{asset.warehouse.address.country}</td>
+                    <td>{asset.model}</td>
+                    <td>{asset.type}</td>
+                    <td>{asset.manufacturer}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          ) : (
+            <div className="loader"></div>
+          )}
+          <div className="text-center">
+            <Link to="/admin/assets/get/all">
+              <button type="button" className="btn btn-secondary">
+                Go Back
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

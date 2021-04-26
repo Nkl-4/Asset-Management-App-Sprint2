@@ -38,7 +38,7 @@ class fetchUserDetailsComponent extends Component {
                   <td>
                     <Link
                       to={{
-                        pathname: `/modifyUser/${user.userId}`,
+                        pathname: `/admin/modifyUser/${user.userId}`,
                         userName: user.userName,
                         userPassword: user.userPassword,
                         userType: user.userType,

@@ -5,19 +5,13 @@ import { connect } from 'react-redux';
 import * as shipmentActions from '../../../store/actions/ShipmentAction';
 
 class DeleteShipmentComponent extends React.Component {
-  // constructor() {
-  //     super();
-  //     this.state = {
-  //         user: {}
-  //     }
-  // }
   componentDidMount() {
     const { shipmentActions, match } = this.props;
     shipmentActions.fetchDeleteShipment(match.params.id);
   }
   render() {
     const { shipments } = this.props;
-    return (window.location.href = '/shipment/all');
+    return (window.location.href = '/admin/shipment/all');
   }
 }
 

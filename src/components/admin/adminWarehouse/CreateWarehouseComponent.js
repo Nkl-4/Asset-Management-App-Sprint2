@@ -39,6 +39,7 @@ class CreateWarehouseComponent extends Component {
 
     const { warehouseActions } = this.props;
     warehouseActions.createWarehouse(payload);
+    window.location.href = '/admin/warehouses/get/all';
   }
 
   clear() {
@@ -54,105 +55,125 @@ class CreateWarehouseComponent extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Add Warehouse</h3>
-        <form onSubmit={this.createWarehouse}>
-          <table>
-            <tbody>
-              {/* <tr>
-                                    <td><label>whId:</label></td>
-                                    <td><input type="text" placeholder="whId" name="whId" id="whId" value={this.state.whId} onChange={this.handleInputChange}></input></td>
-                                </tr> */}
-              <tr>
-                <td>
-                  <label>MANAGER-ID:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="mgrId"
-                    name="mgrId"
-                    id="mgrId"
-                    value={this.state.mgrId}
-                    onChange={this.handleInputChange}
-                    required
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>LOCATION:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="location"
-                    name="location"
-                    id="location"
-                    value={this.state.location}
-                    onChange={this.handleInputChange}
-                    required
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>SUBLOCATION:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="subLocation"
-                    name="subLocation"
-                    id="subLocation"
-                    value={this.state.subLocation}
-                    onChange={this.handleInputChange}
-                    required
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>STATE:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="state"
-                    name="state"
-                    id="state"
-                    value={this.state.state}
-                    onChange={this.handleInputChange}
-                    required
-                  ></input>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label>COUNTRY:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="country"
-                    name="country"
-                    id="country"
-                    value={this.state.country}
-                    onChange={this.handleInputChange}
-                    required
-                  ></input>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <input type="submit" value="submit"></input>
-          <Link to="/homeRedirect">
-            <button>Cancel</button>
-          </Link>
-          {/* <Button color="danger"> Danger! </Button> */}
-        </form>
-        {this.props.warehouse !== undefined &&
-          alert('Warehouse Created Succssfully')}
+      <div className="CreateWarehouseComponent">
+        <center>
+          <h3
+            style={{
+              backgroundColor: 'rgba(109, 109, 109, 0.589)',
+              width: '300px',
+              color: 'white',
+            }}
+          >
+            {' '}
+            ADD WAREHOUSE
+          </h3>
+        </center>
+        <br></br>
+        <div className="container-fluid" id="createware" align="center">
+          <form onSubmit={this.createWarehouse}>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label>MANAGER-ID:</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      placeholder="manager Id"
+                      name="mgrId"
+                      id="mgrId"
+                      value={this.state.mgrId}
+                      onChange={this.handleInputChange}
+                      required
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>LOCATION:</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      placeholder="location"
+                      name="location"
+                      id="location"
+                      value={this.state.location}
+                      onChange={this.handleInputChange}
+                      required
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>SUBLOCATION:</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      placeholder="sub Location"
+                      name="subLocation"
+                      id="subLocation"
+                      value={this.state.subLocation}
+                      onChange={this.handleInputChange}
+                      required
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>STATE:</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      placeholder="state"
+                      name="state"
+                      id="state"
+                      value={this.state.state}
+                      onChange={this.handleInputChange}
+                      required
+                    ></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label>COUNTRY:</label>
+                  </td>
+                  <td>
+                    <input
+                      className="form-control item"
+                      type="text"
+                      placeholder="country"
+                      name="country"
+                      id="country"
+                      value={this.state.country}
+                      onChange={this.handleInputChange}
+                      required
+                    ></input>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <input
+              type="submit"
+              className="btn btn-success"
+              value="Submit"
+            ></input>
+            <span> </span>
+            <Link to="/homeRedirect">
+              <button className="btn btn-danger">Cancel</button>
+            </Link>
+          </form>
+          {this.props.warehouse !== undefined &&
+            alert('Warehouse Created Succssfully')}
+        </div>{' '}
       </div>
     );
   }

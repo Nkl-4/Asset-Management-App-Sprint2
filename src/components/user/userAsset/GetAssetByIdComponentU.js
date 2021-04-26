@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import * as assetActions from '../../../store/actions/Admin_AssetActions';
+import * as assetActions from '../../../store/actions/User_AssetActions';
 
-class AssetListComponent extends React.Component {
-  constructor() {
-    super();
-  }
+class GetAssetByIdComponentU extends Component {
   componentDidMount() {
-    this.props.assetActions.fetchAllAssets();
+    const { assetActions, match } = this.props;
+    assetActions.fetchAssetById(match.params.id);
   }
-
   render() {
+    const { asset } = this.props;
     return (
       <div className="AssetListComponent">
         <div className="container-fluid">
@@ -31,47 +29,44 @@ class AssetListComponent extends React.Component {
             </h3>
           </center>
           <br></br>
-          {this.props.assets !== undefined ? (
+          {asset !== undefined ? (
             <table className="table table-striped table table-bordered table table-hover">
               <thead className="thead-dark">
                 <tr>
                   <th>Asset Id</th>
-                  <th>Warehouse ID</th>
+                  <th>Warehouse Id</th>
+                  <th>Manager Id</th>
+                  <th>Location</th>
+                  <th>Sub Location</th>
+                  <th>State</th>
+                  <th>Country</th>
+                  <th>Model</th>
                   <th>Type</th>
-                  <th>View Details</th>
-                  <th>Update Details</th>
-                  <th>Delete</th>
+                  <th>Manufacturer</th>
                 </tr>
               </thead>
               <tbody>
-                {this.props.assets.map((asset) => (
-                  <tr key={asset.assetId}>
+                {
+                  <tr>
                     <td>{asset.assetId}</td>
                     <td>{asset.warehouse.whId}</td>
+                    <td>{asset.warehouse.mgrId}</td>
+                    <td>{asset.warehouse.address.location}</td>
+                    <td>{asset.warehouse.address.subLocation}</td>
+                    <td>{asset.warehouse.address.state}</td>
+                    <td>{asset.warehouse.address.country}</td>
+                    <td>{asset.model}</td>
                     <td>{asset.type}</td>
-                    <td>
-                      <Link to={`/admin/assetbyid/${asset.assetId}`}>View</Link>
-                    </td>
-                    <td>
-                      <Link to={`/admin/asset/update/${asset.assetId}`}>
-                        Update
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={`/admin/deleteAsset/${asset.assetId}`}>
-                        Delete
-                      </Link>
-                    </td>
+                    <td>{asset.manufacturer}</td>
                   </tr>
-                ))}
+                }
               </tbody>
             </table>
           ) : (
             <div className="loader"></div>
           )}
-
           <div className="text-center">
-            <Link to="/homeRedirect">
+            <Link to="/user/assets/get/all">
               <button type="button" className="btn btn-secondary">
                 Go Back
               </button>
@@ -83,7 +78,7 @@ class AssetListComponent extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  return { assets: state.adminassetReducer.assets };
+  return { asset: state.guserassetReducer.asset };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -92,4 +87,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssetListComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GetAssetByIdComponentU);

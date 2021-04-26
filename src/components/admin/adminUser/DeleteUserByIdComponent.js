@@ -15,5 +15,5 @@ export default function DeleteUserByIdComponent(props) {
       }
     );
   };
-  return <Redirect to="/usersList" />;
+  return <Redirect to="/admin/usersList" />;
 }

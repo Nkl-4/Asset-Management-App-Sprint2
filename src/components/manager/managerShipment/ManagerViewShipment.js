@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as shipmentActions from '../../../store/actions/ShipmentAction';
+import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction';
 import { Button } from 'react-bootstrap';
-// import '../../css/style.css';
 
-class ViewShipmentComponent extends Component {
+class ManagerViewShipmentComponent extends Component {
   constructor() {
     super();
   }
@@ -19,10 +18,7 @@ class ViewShipmentComponent extends Component {
     return (
       <div className="ViewShipment">
         <div className="container-fluid">
-          <br></br>
           <h3 align="center"> SHIPMENT DETAILS </h3>
-          <br></br>
-
           {this.props.shipment !== undefined ? (
             <table className="table table-striped table table-bordered table table-hover">
               <thead className="p-3 mb-2 bg-info text-white">
@@ -37,7 +33,7 @@ class ViewShipmentComponent extends Component {
                                     <th>Delivery Date </th> */}
                   <th>VIEW SHIPMENT </th>
                   <th>EDIT SHIPMENT </th>
-                  <th>DELETE SHIPMENT </th>
+
                   <th>UPDATE STATUS</th>
                 </tr>
               </thead>
@@ -54,27 +50,23 @@ class ViewShipmentComponent extends Component {
                                             <td>{shipment.deliveryDate}</td>
                                              */}
                     <td>
-                      <Link to={`/admin/shipment/view/${shipment.shipmentId}`}>
+                      <Link
+                        to={`/manager/shipment/view/${shipment.shipmentId}`}
+                      >
                         View
                       </Link>
                     </td>
                     <td>
                       <Link
-                        to={`/admin/shipment/update/${shipment.shipmentId}`}
+                        to={`/manager/shipment/update/${shipment.shipmentId}`}
                       >
                         Update
                       </Link>
                     </td>
+
                     <td>
                       <Link
-                        to={`/admin/shipment/delete/${shipment.shipmentId}`}
-                      >
-                        Delete
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/admin/shipment/status/update/${shipment.shipmentId}`}
+                        to={`/shipment/status/update/${shipment.shipmentId}`}
                         disabled={
                           shipment.status === 'DELIVERED' ? true : false
                         }
@@ -112,7 +104,7 @@ class ViewShipmentComponent extends Component {
 }
 
 function mapStateToProps(state) {
-  return { shipment: state.shipmentReducer.shipment };
+  return { shipment: state.managershipmentReducer.shipment };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -124,4 +116,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewShipmentComponent);
+)(ManagerViewShipmentComponent);

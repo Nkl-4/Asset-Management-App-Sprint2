@@ -2,9 +2,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as assetActions from '../../../store/actions/Admin_AssetActions';
+import * as assetActions from '../../../store/actions/Manager_AssetActions';
 
-class AssetListComponent extends React.Component {
+class AssetListComponentWM extends React.Component {
   constructor() {
     super();
   }
@@ -40,7 +40,6 @@ class AssetListComponent extends React.Component {
                   <th>Type</th>
                   <th>View Details</th>
                   <th>Update Details</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,16 +49,13 @@ class AssetListComponent extends React.Component {
                     <td>{asset.warehouse.whId}</td>
                     <td>{asset.type}</td>
                     <td>
-                      <Link to={`/admin/assetbyid/${asset.assetId}`}>View</Link>
-                    </td>
-                    <td>
-                      <Link to={`/admin/asset/update/${asset.assetId}`}>
-                        Update
+                      <Link to={`/manager/assets/get/${asset.assetId}`}>
+                        View
                       </Link>
                     </td>
                     <td>
-                      <Link to={`/admin/deleteAsset/${asset.assetId}`}>
-                        Delete
+                      <Link to={`/manager/assets/modify/${asset.assetId}`}>
+                        Update
                       </Link>
                     </td>
                   </tr>
@@ -83,7 +79,7 @@ class AssetListComponent extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  return { assets: state.adminassetReducer.assets };
+  return { assets: state.managerassetReducer.assets };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -92,4 +88,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssetListComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AssetListComponentWM);

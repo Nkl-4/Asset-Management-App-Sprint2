@@ -34,7 +34,7 @@ class EditUserDataComponent extends Component {
     };
 
     userActions.editUser(payload);
-    window.location.href = '/usersList';
+    window.location.href = '/admin/usersList';
   }
 
   render() {

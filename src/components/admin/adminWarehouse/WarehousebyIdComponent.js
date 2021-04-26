@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as warehouseActions from '../../../store/actions/WarehouseActions';
 
-class WarehousebyIdComponent extends React.Component {
+class WarehousebyIdComponent extends Component {
   componentDidMount() {
     const { warehouseActions, match } = this.props;
     warehouseActions.fetchWarehouseById(match.params.id);
@@ -12,36 +12,58 @@ class WarehousebyIdComponent extends React.Component {
   render() {
     const { warehouse } = this.props;
     return (
-      <div>
-        {warehouse !== undefined ? (
-          <table border="1">
-            <caption>Warehouse Details</caption>
-            <thead>
-              <tr>
-                <th>WAREHOUSE ID</th>
-                <th>MANAGER ID</th>
-                <th>LOCATION</th>
-                <th>SUB LOCATION</th>
-                <th>STATE</th>
-                <th>COUNTRY</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
+      <div className="WarehouseListComponent">
+        <div className="container-fluid">
+          <br></br>
+          <center>
+            <h3
+              style={{
+                backgroundColor: 'rgba(109, 109, 109, 0.589)',
+                width: '300px',
+                color: 'white',
+              }}
+            >
+              {' '}
+              WAREHOUSE DETAILS{' '}
+            </h3>
+          </center>
+          <br></br>
+          {warehouse !== undefined ? (
+            <table className="table table-striped table table-bordered table table-hover">
+              <thead className="thead-dark">
                 <tr>
-                  <td>{warehouse.whId}</td>
-                  <td>{warehouse.mgrId}</td>
-                  <td>{warehouse.address.location}</td>
-                  <td>{warehouse.address.subLocation}</td>
-                  <td>{warehouse.address.state}</td>
-                  <td>{warehouse.address.country}</td>
+                  <th>WAREHOUSE ID</th>
+                  <th>MANAGER ID</th>
+                  <th>LOCATION</th>
+                  <th>SUB LOCATION</th>
+                  <th>STATE</th>
+                  <th>COUNTRY</th>
                 </tr>
-              }
-            </tbody>
-          </table>
-        ) : (
-          <h3>Loading....</h3>
-        )}
+              </thead>
+              <tbody>
+                {
+                  <tr>
+                    <td>{warehouse.whId}</td>
+                    <td>{warehouse.mgrId}</td>
+                    <td>{warehouse.address.location}</td>
+                    <td>{warehouse.address.subLocation}</td>
+                    <td>{warehouse.address.state}</td>
+                    <td>{warehouse.address.country}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          ) : (
+            <div className="loader"></div>
+          )}
+          <div className="text-center">
+            <Link to="/admin/warehouses/get/all">
+              <button type="button" className="btn btn-secondary">
+                Go Back
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

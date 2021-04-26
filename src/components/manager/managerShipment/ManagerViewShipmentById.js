@@ -2,9 +2,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as shipmentActions from '../../../store/actions/ShipmentAction';
+import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction';
 
-class ViewShipmentByIdComponent extends React.Component {
+class ManagerViewShipmentByIdComponent extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
     shipmentActions.fetchShipmentById(match.params.id);
@@ -14,21 +14,20 @@ class ViewShipmentByIdComponent extends React.Component {
     return (
       <div className="ViewShipment" align="center">
         <div className="container-fluid">
-          <br></br>
           <h3>SHIPMENT DETAIL</h3>
           <br></br>
           {shipments !== undefined ? (
             <table className="table table-striped table table-bordered table table-hover">
               <thead className="p-3 mb-2 bg-info text-white">
                 <tr>
-                  <th>Shipment ID</th>
-                  <th>Asset ID</th>
-                  <th>User ID </th>
-                  <th>Shipment Status</th>
-                  <th>Source WareHouse ID </th>
-                  <th>Destination WareHouse ID </th>
-                  <th>ShipmentDate </th>
-                  <th>Delivery Date </th>
+                  <th>SHIPMENT ID</th>
+                  <th>ASSET ID</th>
+                  <th>USER ID </th>
+                  <th>SHIPMENT STATUS</th>
+                  <th>SOURCE WAREHOUSE ID </th>
+                  <th>DESTINATION WAREHOUSE ID </th>
+                  <th>SHIPMENT DATE </th>
+                  <th>DELIVERY DATE </th>
                 </tr>
               </thead>
               <tbody>
@@ -53,7 +52,7 @@ class ViewShipmentByIdComponent extends React.Component {
           )}
           <br></br>
           <div className="text-center">
-            <Link to="/admin/shipment/all">
+            <Link to="/manager/shipment/all">
               <button type="button" className="btn btn-secondary">
                 Go Back
               </button>
@@ -67,7 +66,7 @@ class ViewShipmentByIdComponent extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { shipments: state.shipmentReducer.shipments };
+  return { shipments: state.managershipmentReducer.shipments };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -79,4 +78,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewShipmentByIdComponent);
+)(ManagerViewShipmentByIdComponent);

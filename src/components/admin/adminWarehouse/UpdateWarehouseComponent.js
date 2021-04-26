@@ -47,106 +47,126 @@ class UpdateWarehouseComponent extends Component {
     }
 
     return (
-      <div>
+      <div className="WarehouseListComponent">
+        <br></br>
+        <center>
+          <h3
+            style={{
+              backgroundColor: 'rgba(109, 109, 109, 0.589)',
+              width: '300px',
+              color: 'white',
+            }}
+          >
+            {' '}
+            UPDATE WAREHOUSE
+          </h3>
+        </center>
+        <br></br>
         {warehouse !== undefined ? (
-          <form onSubmit={this.updateWarehouse}>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <label>WAREHOUSE ID:</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.whId}
-                      type="text"
-                      ref={this.whId}
-                      disabled
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>MANAGER ID:</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.mgrId}
-                      type="text"
-                      ref={this.mgrId}
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>LOCATION:</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.address.location}
-                      type="text"
-                      ref={this.location}
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>SUB LOCATION:</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.address.subLocation}
-                      type="text"
-                      ref={this.subLocation}
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>STATE</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.address.state}
-                      type="text"
-                      ref={this.state}
-                      required
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>COUNTRY</label>
-                  </td>
-                  <td>
-                    <input
-                      defaultValue={warehouse.address.country}
-                      type="text"
-                      ref={this.country}
-                      required
-                    />
-                  </td>
-                </tr>
+          <div className="container-fluid" id="updateware" align="center">
+            <form onSubmit={this.updateWarehouse}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <label>WAREHOUSE ID:</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.whId}
+                        type="text"
+                        ref={this.whId}
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>MANAGER ID:</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.mgrId}
+                        type="text"
+                        ref={this.mgrId}
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>LOCATION:</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.address.location}
+                        type="text"
+                        ref={this.location}
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>SUB LOCATION:</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.address.subLocation}
+                        type="text"
+                        ref={this.subLocation}
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>STATE</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.address.state}
+                        type="text"
+                        ref={this.state}
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>COUNTRY</label>
+                    </td>
+                    <td>
+                      <input
+                        className="form-control item"
+                        defaultValue={warehouse.address.country}
+                        type="text"
+                        ref={this.country}
+                        required
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-                <tr>
-                  <td>
-                    {' '}
-                    <input type="submit" value="update"></input>
-                  </td>
-                  <td>
-                    <Link to="/homeRedirect">
-                      <button>Cancel</button>
-                    </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
+              <input
+                type="submit"
+                className="btn btn-success"
+                value="Update"
+              ></input>
+              <span> </span>
+              <Link to="/admin/warehouses/get/all">
+                <button className="btn btn-danger">Cancel</button>
+              </Link>
+            </form>
+          </div>
         ) : (
-          <h2>Loading....</h2>
+          <div className="loader"></div>
         )}
       </div>
     );

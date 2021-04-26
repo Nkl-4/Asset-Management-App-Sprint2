@@ -33,6 +33,17 @@ import GetAssetByIdComponent from './components/admin/adminAsset/GetAssetByIdCom
 import CreateAssetComponent from './components/admin/adminAsset/CreateAssetComponent';
 import DeleteAssetByIdComponent from './components/admin/adminAsset/DeleteAssetByIdComponent';
 import UpdateAssetComponent from './components/admin/adminAsset/UpdateAssetComponent';
+import ManagerViewShipment from 'components/manager/managerShipment/ManagerViewShipment';
+import ManagerViewShipmentById from 'components/manager/managerShipment/ManagerViewShipmentById';
+import ManagerUpdateShipment from 'components/manager/managerShipment/ManagerUpdateShipment';
+import AssetListComponentWM from 'components/manager/managerAsset/AssetListComponentWM';
+import GetAssetByIdComponentWM from 'components/manager/managerAsset/GetAssetByIdComponentWM';
+import UpdateAssetComponentWM from 'components/manager/managerAsset/UpdateAssetComponentWM';
+import ManagerShipmentStatusUpdate from 'components/manager/managerShipment/ManagerShipmentStatusUpdate';
+import AssetListComponentU from 'components/user/userAsset/AssetListComponentU';
+import GetAssetByIdComponentU from 'components/user/userAsset/GetAssetByIdComponentU';
+import UserViewShipment from 'components/user/userShipment/UserViewShipment';
+import UserViewShipmentById from 'components/user/userShipment/UserViewShipmentById';
 
 var currentUser = localStorage.getItem('user_type');
 
@@ -44,39 +55,63 @@ const Routes = () => (
     <Route path="/signout" component={userSignOut} />
     <Route path="/homeRedirect" component={UserHomePageSwitcher} />
 
-    <Route path={`/register`} component={RegisterComponent} />
-    <Route path="/usersList" component={UsersListComponent} />
-    <Route path={`/getUserByid/:id`} component={fetchUserDetailsComponent} />
-    <Route path={`/deleteUser/:id`} component={DeleteUserByIdComponent} />
+    <Route path={`/admin/register`}>
+      {currentUser === 'ADMIN' ? <RegisterComponent /> : <NotAuthorizedPage />}
+    </Route>
+
+    <Route path="/admin/usersList">
+      {currentUser === 'ADMIN' ? <UsersListComponent /> : <NotAuthorizedPage />}
+    </Route>
+
     <Route
-      path={`/modifyUser/:id`}
+      path={`/admin/getUserByid/:id`}
+      component={fetchUserDetailsComponent}
+    />
+    <Route
+      path={`/admin/admin/deleteUser/:id`}
+      component={DeleteUserByIdComponent}
+    />
+    <Route
+      path={`/admin/modifyUser/:id`}
       render={(props) => <EditUserDataComponent {...props} />}
     />
     <Route path="/admin/home">
       {currentUser === 'ADMIN' ? <AdminComponent /> : <NotAuthorizedPage />}
     </Route>
-    <Route path="/report" component={ReportComponent} />
+    <Route path="/admin/report" component={ReportComponent} />
 
     {/* ADMIN Shipment */}
-    <Route path={'/shipment/all'} component={ViewShipmentComponent} exact />
-    <Route path={'/shipment/view/:id'} component={ViewShipmentById} exact />
     <Route
-      path={'/shipment/delete/:id'}
+      path={'/admin/shipment/all'}
+      component={ViewShipmentComponent}
+      exact
+    />
+    <Route
+      path={'/admin/shipment/view/:id'}
+      component={ViewShipmentById}
+      exact
+    />
+    <Route
+      path={'/admin/shipment/delete/:id'}
       component={DeleteShipmentComponent}
       exact
     />
-    <Route path={'/shipment/add'} component={CreateShipmentComponent} exact />
     <Route
-      path={`/shipment/update/:id`}
+      path={'/admin/shipment/add'}
+      component={CreateShipmentComponent}
+      exact
+    />
+    <Route
+      path={`/admin/shipment/update/:id`}
       render={(props) => <UpdateShipment {...props} />}
     />
     <Route
-      path={'/shipment/status/update/:id'}
+      path={'/admin/shipment/status/update/:id'}
       component={ShipmentStatusUpdate}
       exact
     />
 
-    {/*  warehouses */}
+    {/*ADMIN  warehouses */}
     <Route
       path={`/admin/warehouses`}
       component={CreateWarehouseComponent}
@@ -109,10 +144,14 @@ const Routes = () => (
       component={AssetListComponent}
       exact
     />
-    <Route path={`/assetbyid/:id`} component={GetAssetByIdComponent} exact />
+    <Route
+      path={`/admin/assetbyid/:id`}
+      component={GetAssetByIdComponent}
+      exact
+    />
     <Route path={`/admin/assets`} component={CreateAssetComponent} exact />
     <Route
-      path={`/deleteAsset/:id`}
+      path={`/admin/deleteAsset/:id`}
       component={DeleteAssetByIdComponent}
       exact
     />
@@ -123,6 +162,65 @@ const Routes = () => (
     />
     <Route path="/user/home" component={UserComponent} />
     <Route path="/manager/home" component={ManagerComponent} />
+
+    {/* MANAGER */}
+    <Route
+      path={`/manager/assets/get/all`}
+      component={AssetListComponentWM}
+      exact
+    />
+    <Route
+      path={`/manager/assetbyid/:id`}
+      component={GetAssetByIdComponentWM}
+      exact
+    />
+    <Route
+      path={`/manager/asset/update/:id`}
+      component={UpdateAssetComponentWM}
+      exact
+    />
+
+    {/* WH Shipment */}
+    <Route
+      path={'/manager/shipment/all'}
+      component={ManagerViewShipment}
+      exact
+    />
+    <Route
+      path={'/manager/shipment/view/:id'}
+      component={ManagerViewShipmentById}
+      exact
+    />
+    <Route
+      path={`/manager/shipment/update/:id`}
+      render={(props) => <ManagerUpdateShipment {...props} />}
+    />
+    <Route
+      path={'/manager/shipment/status/update/:id'}
+      component={ManagerShipmentStatusUpdate}
+      exact
+    />
+    <Route path="/manager/report" component={ReportComponent} />
+
+    {/* USER ASSET*/}
+    <Route
+      path={`/user/assets/get/all`}
+      component={AssetListComponentU}
+      exact
+    />
+    <Route
+      path={`/user/assetbyid/:id`}
+      component={GetAssetByIdComponentU}
+      exact
+    />
+
+    {/* USER Shipment */}
+    <Route path={'/user/shipment/all'} component={UserViewShipment} exact />
+    <Route
+      path={'/user/shipment/view/:id'}
+      component={UserViewShipmentById}
+      exact
+    />
   </Switch>
 );
 

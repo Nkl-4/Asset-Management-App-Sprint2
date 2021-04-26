@@ -7,35 +7,35 @@ export default function AdminComponent() {
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">User Registration</h4>
-            <a href="/register" className="stretched-link"></a>
+            <a href="/admin/register" className="stretched-link"></a>
           </div>
         </div>
 
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">User DB</h4>
-            <a href="/usersList" className="stretched-link"></a>
+            <a href="/admin/usersList" className="stretched-link"></a>
           </div>
         </div>
 
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">Report</h4>
-            <a href="/report" className="stretched-link"></a>
+            <a href="/admin/report" className="stretched-link"></a>
           </div>
         </div>
 
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">Shipments</h4>
-            <a href="/shipment/all" className="stretched-link"></a>
+            <a href="/admin/shipment/all" className="stretched-link"></a>
           </div>
         </div>
 
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">Add Shipment</h4>
-            <a href="/shipment/add" className="stretched-link"></a>
+            <a href="/admin/shipment/add" className="stretched-link"></a>
           </div>
         </div>
       </div>

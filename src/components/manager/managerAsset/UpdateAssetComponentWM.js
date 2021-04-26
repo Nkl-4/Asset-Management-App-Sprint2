@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as assetActions from '../../../store/actions/Admin_AssetActions';
+import * as assetActions from '../../../store/actions/Manager_AssetActions';
 
-class UpdateAssetComponent extends Component {
+class UpdateAssetComponentWM extends Component {
   constructor(props) {
     super(props);
 
@@ -34,7 +34,10 @@ class UpdateAssetComponent extends Component {
       assetId: this.assetId.current.value,
       whId: this.whId.current.value,
       mgrId: this.mgrId.current.value,
-
+      // location: this.location.current.value,
+      // subLocation: this.subLocation.current.value,
+      // state: this.state.current.value,
+      // country: this.country.current.value,
       model: this.model.current.value,
       type: this.type.current.value,
       manufacturer: this.manufacturer.current.value,
@@ -48,11 +51,12 @@ class UpdateAssetComponent extends Component {
     const { asset, isUpdated } = this.props;
 
     if (isUpdated !== undefined && isUpdated) {
-      window.location.href = '/admin/assets/get/all';
+      window.location.href = '/manager/assets/get/all';
     }
 
     return (
       <div className="AssetListComponent">
+        <br></br>
         <br></br>
         <center>
           <h3
@@ -65,7 +69,6 @@ class UpdateAssetComponent extends Component {
             UPDATE ASSET
           </h3>
         </center>
-        <br></br>
         {asset !== undefined ? (
           <div className="container-fluid" id="updateasset" align="center">
             <form onSubmit={this.updateAsset}>
@@ -113,7 +116,6 @@ class UpdateAssetComponent extends Component {
                       />
                     </td>
                   </tr>
-
                   <tr>
                     <td>
                       <label>Model:</label>
@@ -174,7 +176,7 @@ class UpdateAssetComponent extends Component {
                 value="Update"
               ></input>
               <span> </span>
-              <Link to="/admin/assets/get/all">
+              <Link to="/manager/assets/get/all">
                 <button className="btn btn-danger">Cancel</button>
               </Link>
             </form>
@@ -189,8 +191,8 @@ class UpdateAssetComponent extends Component {
 
 function mapStateToProps(state) {
   return {
-    asset: state.adminassetReducer.asset,
-    isUpdated: state.adminassetReducer.isUpdated,
+    asset: state.managerassetReducer.asset,
+    isUpdated: state.managerassetReducer.isUpdated,
   };
 }
 
@@ -203,4 +205,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UpdateAssetComponent);
+)(UpdateAssetComponentWM);

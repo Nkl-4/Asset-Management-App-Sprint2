@@ -2,9 +2,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as assetActions from '../../../store/actions/Admin_AssetActions';
+import * as assetActions from '../../../store/actions/User_AssetActions';
 
-class AssetListComponent extends React.Component {
+class AssetListComponentU extends React.Component {
   constructor() {
     super();
   }
@@ -39,8 +39,6 @@ class AssetListComponent extends React.Component {
                   <th>Warehouse ID</th>
                   <th>Type</th>
                   <th>View Details</th>
-                  <th>Update Details</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,17 +48,7 @@ class AssetListComponent extends React.Component {
                     <td>{asset.warehouse.whId}</td>
                     <td>{asset.type}</td>
                     <td>
-                      <Link to={`/admin/assetbyid/${asset.assetId}`}>View</Link>
-                    </td>
-                    <td>
-                      <Link to={`/admin/asset/update/${asset.assetId}`}>
-                        Update
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={`/admin/deleteAsset/${asset.assetId}`}>
-                        Delete
-                      </Link>
+                      <Link to={`/user/assets/get/${asset.assetId}`}>View</Link>
                     </td>
                   </tr>
                 ))}
@@ -83,7 +71,7 @@ class AssetListComponent extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  return { assets: state.adminassetReducer.assets };
+  return { assets: state.guserassetReducer.assets };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -92,4 +80,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssetListComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AssetListComponentU);

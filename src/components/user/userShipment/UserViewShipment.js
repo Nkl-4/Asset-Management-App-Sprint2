@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as shipmentActions from '../../../store/actions/ShipmentAction';
-import { Button } from 'react-bootstrap';
-// import '../../css/style.css';
+import * as shipmentActions from '../../../store/actions/User_ShipmentAction';
 
-class ViewShipmentComponent extends Component {
+class UserViewShipmentComponent extends Component {
   constructor() {
     super();
   }
@@ -19,10 +17,7 @@ class ViewShipmentComponent extends Component {
     return (
       <div className="ViewShipment">
         <div className="container-fluid">
-          <br></br>
           <h3 align="center"> SHIPMENT DETAILS </h3>
-          <br></br>
-
           {this.props.shipment !== undefined ? (
             <table className="table table-striped table table-bordered table table-hover">
               <thead className="p-3 mb-2 bg-info text-white">
@@ -33,12 +28,9 @@ class ViewShipmentComponent extends Component {
                   <th>SHIPMENT STATUS</th>
                   <th>SOURCE WAREHOUSE ID </th>
                   {/* <th>Destination WareHouse ID </th>
-                                    <th>ShipmentDate </th>
-                                    <th>Delivery Date </th> */}
+                                <th>ShipmentDate </th>
+                                <th>Delivery Date </th> */}
                   <th>VIEW SHIPMENT </th>
-                  <th>EDIT SHIPMENT </th>
-                  <th>DELETE SHIPMENT </th>
-                  <th>UPDATE STATUS</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,44 +42,12 @@ class ViewShipmentComponent extends Component {
                     <td>{shipment.status}</td>
                     <td>{shipment.sourceWhId}</td>
                     {/* <td>{shipment.destWhId}</td>
-                                            <td>{shipment.shipmentDate}</td>
-                                            <td>{shipment.deliveryDate}</td>
-                                             */}
+                                        <td>{shipment.shipmentDate}</td>
+                                        <td>{shipment.deliveryDate}</td>
+                                         */}
                     <td>
-                      <Link to={`/admin/shipment/view/${shipment.shipmentId}`}>
+                      <Link to={`/user/shipment/view/${shipment.shipmentId}`}>
                         View
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/admin/shipment/update/${shipment.shipmentId}`}
-                      >
-                        Update
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/admin/shipment/delete/${shipment.shipmentId}`}
-                      >
-                        Delete
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        to={`/admin/shipment/status/update/${shipment.shipmentId}`}
-                        disabled={
-                          shipment.status === 'DELIVERED' ? true : false
-                        }
-                      >
-                        <Button
-                          type="button"
-                          className="btn-btn-outline-danger btn-sm"
-                          disabled={
-                            shipment.status === 'DELIVERED' ? true : false
-                          }
-                        >
-                          Delivered
-                        </Button>
                       </Link>
                     </td>
                   </tr>
@@ -112,7 +72,7 @@ class ViewShipmentComponent extends Component {
 }
 
 function mapStateToProps(state) {
-  return { shipment: state.shipmentReducer.shipment };
+  return { shipment: state.usershipmentReducer.shipment };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -124,4 +84,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewShipmentComponent);
+)(UserViewShipmentComponent);

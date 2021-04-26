@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as shipmentActions from '../../../store/actions/ShipmentAction';
+import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction';
 
-class UpdateShipmentComponent extends Component {
+class ManagerUpdateShipmentComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -41,32 +41,20 @@ class UpdateShipmentComponent extends Component {
 
     const { shipmentActions } = this.props;
     shipmentActions.updateShipment(payload);
-    // this.props.history.push("/shipment/all");
     this.props.shipmentActions.fetchAllShipment();
+    window.location.href = '/manager/shipment/all';
   }
 
   render() {
     const { shipment, updateShipment } = this.props;
 
     if (updateShipment !== undefined && updateShipment) {
-      window.location.href = '/admin/shipment/all';
+      window.location.href = '/manager/shipment/all';
     }
 
     return (
       <div className="UpdateShipment">
-        <br></br>
-        <center>
-          <h3
-            style={{
-              backgroundColor: 'rgba(198, 26, 225, 0.589)',
-              width: '300px',
-              color: 'white',
-            }}
-          >
-            UPDATE SHIPMENT{' '}
-          </h3>
-        </center>
-
+        <h3 align="center">UPDATE SHIPMENT</h3>
         {shipment !== undefined ? (
           <div className="container-fluid" id="updateship" align="center">
             <form onSubmit={this.updateShipment}>
@@ -120,7 +108,7 @@ class UpdateShipmentComponent extends Component {
                     </td>
                     <td>
                       <select
-                        className="form-control item input-group"
+                        className="form-control item"
                         defaultValue={shipment.status}
                         ref={this.status}
                         required
@@ -205,7 +193,7 @@ class UpdateShipmentComponent extends Component {
                 value="Update"
               ></input>
               <span> </span>
-              <Link to="/admin/shipment/all">
+              <Link to="/manager/shipment/all">
                 <button className="btn btn-danger">Cancel</button>
               </Link>
             </form>
@@ -220,9 +208,9 @@ class UpdateShipmentComponent extends Component {
 
 function mapStateToProps(state) {
   return {
-    shipment: state.shipmentReducer.shipments,
-    updateShipment: state.shipmentReducer.updateShipment,
-    // shipments: state.shipmentReducer.shipment
+    shipment: state.managershipmentReducer.shipments,
+    updateShipment: state.managershipmentReducer.updateShipment,
+    // shipment: state.managershipmentReducer.shipment
   };
 }
 
@@ -235,4 +223,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UpdateShipmentComponent);
+)(ManagerUpdateShipmentComponent);
