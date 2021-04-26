@@ -61,7 +61,7 @@ class GetAllUsersComponent extends Component {
                   <td>{user.userName}</td>
                   <td>{user.userType}</td>
                   <td>
-                    <a href={`/getUserByid/${user.userId}`}>
+                    <a href={`/admin/getUserByid/${user.userId}`}>
                       <button
                         type="button"
                         className="btn btn-outline-info btn-sm"

@@ -21,7 +21,7 @@ export default function ManagerComponent() {
         <div className="card" id="link_card">
           <div className="card-body">
             <h4 className="card-title">Report</h4>
-            <a href="/report" className="stretched-link"></a>
+            <a href="/manager/report" className="stretched-link"></a>
           </div>
         </div>
       </div>

@@ -61,6 +61,23 @@ class CreateShipmentComponent extends Component {
   }
 
   render() {
+    let currentDate = () => {
+      var today = new Date();
+      var dd = today.getDate();
+
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      today = yyyy + '-' + mm + '-' + dd;
+      return today;
+    };
+
     return (
       <div className="CreateShipment">
         <br></br>
@@ -80,10 +97,6 @@ class CreateShipmentComponent extends Component {
           <form onSubmit={this.createShipment}>
             <table>
               <tbody>
-                {/* <tr>
-                                <td><label>Shipment ID:</label></td>
-                                <td><input type="text" placeholder="Shipment ID" name="shipmentId" id="shipmentId" value={this.state.shipmentId} onChange={this.handleInputChange}di></input></td>
-                            </tr> */}
                 <tr>
                   <td>
                     <label>Asset ID:</label>
@@ -147,7 +160,6 @@ class CreateShipmentComponent extends Component {
                     </select>
                   </td>
                 </tr>
-                {/* <td><input type="text" placeholder="Status" name="status" id="status" value={this.state.status} onChange={this.handleInputChange}></input></td> */}
                 <tr>
                   <td>
                     <label>Source Warehouse ID:</label>
@@ -195,6 +207,7 @@ class CreateShipmentComponent extends Component {
                       id="shipmentDate"
                       value={this.state.shipmentDate}
                       onChange={this.handleInputChange}
+                      max={currentDate()}
                       required
                     ></input>
                   </td>
@@ -212,6 +225,7 @@ class CreateShipmentComponent extends Component {
                       id="deliveryDate"
                       value={this.state.deliveryDate}
                       onChange={this.handleInputChange}
+                      max={currentDate()}
                       required
                     ></input>
                   </td>
@@ -230,13 +244,8 @@ class CreateShipmentComponent extends Component {
               <button className="btn btn-danger">Cancel</button>
             </Link>
           </form>
-          {
-            this.props.newShipment !== undefined &&
-              alert('Shipment Created Succssfully ')
-
-            // with id" + this.props.newuser.userId
-          }
-          {/* <Link to="/adminview"><button>Go Back</button></Link> */}
+          {this.props.newShipment !== undefined &&
+            alert('Shipment Created Succssfully ')}
         </div>
       </div>
     );

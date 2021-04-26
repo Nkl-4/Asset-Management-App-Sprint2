@@ -17,13 +17,6 @@ export default function UserComponent() {
             <a href="/user/shipment/all" className="stretched-link"></a>
           </div>
         </div>
-
-        <div className="card" id="link_card">
-          <div className="card-body">
-            <h4 className="card-title">Report</h4>
-            <a href="/report" className="stretched-link"></a>
-          </div>
-        </div>
       </div>
     </div>
   );

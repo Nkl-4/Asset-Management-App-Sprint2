@@ -48,7 +48,7 @@ class AssetListComponentU extends React.Component {
                     <td>{asset.warehouse.whId}</td>
                     <td>{asset.type}</td>
                     <td>
-                      <Link to={`/user/assets/get/${asset.assetId}`}>View</Link>
+                      <Link to={`/user/asset/get/${asset.assetId}`}>View</Link>
                     </td>
                   </tr>
                 ))}

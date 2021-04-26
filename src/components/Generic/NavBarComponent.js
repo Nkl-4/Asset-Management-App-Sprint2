@@ -2,6 +2,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function NavBarComponent() {
+  var currentUser = localStorage.getItem('user_type');
+
+  let login_option = (
+    <li className="nav-item nav-link px-3 col">
+      <NavLink to={`/login`}>Login</NavLink>
+    </li>
+  );
+
+  let signout_option = (
+    <li className="nav-item nav-link px-3 ">
+      <NavLink to={`/signout`}>Sign Out</NavLink>
+    </li>
+  );
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-2 shadow  bg-white rounded">
@@ -25,12 +39,9 @@ export default function NavBarComponent() {
             <li className="nav-item nav-link px-3">
               <NavLink to={`/homeRedirect`}>Home</NavLink>
             </li>
-            <li className="nav-item nav-link px-3 col">
-              <NavLink to={`/login`}>Login</NavLink>
-            </li>
-            <li className="nav-item nav-link px-3 ">
-              <NavLink to={`/signout`}>Sign Out</NavLink>
-            </li>
+            {!['ADMIN', 'GUSER', 'WHMGR'].includes(currentUser) && login_option}
+            {['ADMIN', 'GUSER', 'WHMGR'].includes(currentUser) &&
+              signout_option}
           </ul>
         </div>
       </nav>

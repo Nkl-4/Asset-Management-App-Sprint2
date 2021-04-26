@@ -49,12 +49,12 @@ class AssetListComponentWM extends React.Component {
                     <td>{asset.warehouse.whId}</td>
                     <td>{asset.type}</td>
                     <td>
-                      <Link to={`/manager/assets/get/${asset.assetId}`}>
+                      <Link to={`/manager/asset/get/${asset.assetId}`}>
                         View
                       </Link>
                     </td>
                     <td>
-                      <Link to={`/manager/assets/modify/${asset.assetId}`}>
+                      <Link to={`/manager/asset/update/${asset.assetId}`}>
                         Update
                       </Link>
                     </td>
