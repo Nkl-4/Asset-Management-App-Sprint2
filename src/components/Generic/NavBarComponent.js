@@ -18,9 +18,11 @@ export default function NavBarComponent() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light px-2 shadow  bg-white rounded">
+      <nav className="navbar navbar-expand-lg px-2 shadow rounded navbar-color">
         <h5 className="navbar-brand border ">
-          <NavLink to={`/`}>Asset Management App</NavLink>
+          <NavLink to={`/`} id="appTitle">
+            Asset Management App
+          </NavLink>
         </h5>
         <button
           className="navbar-toggler"

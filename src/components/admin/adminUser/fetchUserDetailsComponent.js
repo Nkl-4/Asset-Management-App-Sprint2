@@ -9,6 +9,11 @@ class fetchUserDetailsComponent extends Component {
     userActions.fetchUserById(match.params.id);
   }
 
+  componentDidUpdate() {
+    const { userActions, match } = this.props;
+    userActions.fetchUserById(match.params.id);
+  }
+
   render() {
     const { user } = this.props;
     return user !== undefined ? (
@@ -16,7 +21,7 @@ class fetchUserDetailsComponent extends Component {
         <h2>User Data</h2>
         <div className="container d-flex justify-content-center align-items-center">
           <table
-            className="table table-striped table-sm felx-d justify-content-center align-items-center w-50 p-3"
+            className="table table-striped table-sm flex-d justify-content-center align-items-center w-50 p-3"
             border="1"
           >
             <thead className="thead-dark">

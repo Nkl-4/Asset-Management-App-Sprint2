@@ -33,17 +33,17 @@ import GetAssetByIdComponent from './components/admin/adminAsset/GetAssetByIdCom
 import CreateAssetComponent from './components/admin/adminAsset/CreateAssetComponent';
 import DeleteAssetByIdComponent from './components/admin/adminAsset/DeleteAssetByIdComponent';
 import UpdateAssetComponent from './components/admin/adminAsset/UpdateAssetComponent';
-import ManagerViewShipment from 'components/manager/managerShipment/ManagerViewShipment';
-import ManagerViewShipmentById from 'components/manager/managerShipment/ManagerViewShipmentById';
-import ManagerUpdateShipment from 'components/manager/managerShipment/ManagerUpdateShipment';
-import AssetListComponentWM from 'components/manager/managerAsset/AssetListComponentWM';
-import GetAssetByIdComponentWM from 'components/manager/managerAsset/GetAssetByIdComponentWM';
-import UpdateAssetComponentWM from 'components/manager/managerAsset/UpdateAssetComponentWM';
-import ManagerShipmentStatusUpdate from 'components/manager/managerShipment/ManagerShipmentStatusUpdate';
-import AssetListComponentU from 'components/user/userAsset/AssetListComponentU';
-import GetAssetByIdComponentU from 'components/user/userAsset/GetAssetByIdComponentU';
-import UserViewShipment from 'components/user/userShipment/UserViewShipment';
-import UserViewShipmentById from 'components/user/userShipment/UserViewShipmentById';
+import ManagerViewShipment from './components/manager/managerShipment/ManagerViewShipment';
+import ManagerViewShipmentById from './components/manager/managerShipment/ManagerViewShipmentById';
+import ManagerUpdateShipment from './components/manager/managerShipment/ManagerUpdateShipment';
+import AssetListComponentWM from './components/manager/managerAsset/AssetListComponentWM';
+import GetAssetByIdComponentWM from './components/manager/managerAsset/GetAssetByIdComponentWM';
+import UpdateAssetComponentWM from './components/manager/managerAsset/UpdateAssetComponentWM';
+import ManagerShipmentStatusUpdate from './components/manager/managerShipment/ManagerShipmentStatusUpdate';
+import AssetListComponentU from './components/user/userAsset/AssetListComponentU';
+import GetAssetByIdComponentU from './components/user/userAsset/GetAssetByIdComponentU';
+import UserViewShipment from './components/user/userShipment/UserViewShipment';
+import UserViewShipmentById from './components/user/userShipment/UserViewShipmentById';
 
 var currentUser = localStorage.getItem('user_type');
 
@@ -123,13 +123,11 @@ const Routes = () => (
       render={(props) => <UpdateShipment {...props} />}
     />
 
-    <Route path={'/admin/shipment/status/update/:id'} exact>
-      {currentUser === 'ADMIN' ? (
-        <ShipmentStatusUpdate />
-      ) : (
-        <NotAuthorizedPage />
-      )}
-    </Route>
+    <Route
+      path={'/admin/shipment/status/update/:id'}
+      component={ShipmentStatusUpdate}
+      exact
+    />
 
     {/*ADMIN  warehouses */}
     <Route path={`/admin/warehouses`} exact>

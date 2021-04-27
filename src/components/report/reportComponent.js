@@ -5,7 +5,6 @@ import Axios from 'axios';
 
 export default function ReportComponent() {
   const [data, setData] = useState([]);
-  //   const [monthYear, setMonthYear] = useState('');
 
   const apiUrl = 'http://localhost:8090';
 

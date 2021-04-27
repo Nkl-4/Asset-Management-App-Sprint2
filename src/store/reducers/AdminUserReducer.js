@@ -34,13 +34,13 @@ export default function userReducer(state = initialState, action) {
     case 'LOGIN_SUCCESS':
       return {
         ...state,
-        isAuthUser: true,
+        isAuthUser: false,
       };
 
     case 'LOGIN_FAILED':
       return {
         ...state,
-        isAuthUser: false,
+        isAuthUser: true,
       };
 
     default:

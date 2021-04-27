@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as userActions from '../../store/actions/AdminUserAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
 class LoginFormComponent extends Component {
@@ -46,42 +46,46 @@ class LoginFormComponent extends Component {
 
   render() {
     return (
-      <div
-        className="d-flex justify-content-center align-items-center"
-        style={{ height: '400px' }}
-      >
-        <div className="card form-group row login-card">
-          <form className=" p-2 w-40 p-3 " onSubmit={this.loginAction}>
-            <div className="col-auto">
-              <label htmlFor="userName">
-                <input
-                  className="input-group from-group input-lg"
-                  type="text"
-                  name="userName"
-                  placeholder="User Name"
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
+      <div className="loginPage">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="card">
+                <form onSubmit={this.loginAction} className="box">
+                  <h1>Login</h1>
+                  <p className="text-muted">
+                    {' '}
+                    Please enter your UserId and password!
+                  </p>
+                  <input
+                    type="text"
+                    name="userName"
+                    placeholder="Username"
+                    onChange={this.handleChange}
+                  />
+                  <input
+                    type="password"
+                    name="userPassword"
+                    placeholder="Password"
+                    onChange={this.handleChange}
+                  />
+                  <input type="submit" name="" value="Login" href="#" />
+                </form>
+              </div>
+              <Alert
+                variant="danger"
+                style={{
+                  width: '200px',
+                  marginLeft: '78%',
+                  textAlign: 'center',
+                }}
+                hidden={!this.props.isAuthUser}
+                className="login-alert"
+              >
+                Invalid Credentials
+              </Alert>
             </div>
-            <div className="col-auto">
-              <label htmlFor="userPassword">
-                <input
-                  className="input-group from-group"
-                  type="password"
-                  placeholder="Password"
-                  name="userPassword"
-                  onChange={this.handleChange}
-                  required
-                />
-              </label>
-            </div>
-            <div className="col-auto">
-              <Button type="submit" value="Submit" variant="primary">
-                Sign in
-              </Button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     );

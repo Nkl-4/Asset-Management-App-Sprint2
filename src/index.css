@@ -1,14 +1,37 @@
+.navbar-color {
+  background-color: rgba(188, 211, 253, 0.733);
+  width: 100vmax;
+}
+
+.navbar a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  font-size: 120%;
+  text-decoration: none;
+}
+
+#appTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 120%;
+  text-decoration: none;
+}
+
 .navbar a:hover {
   color: #f1356d;
 }
 
 #link_card {
   margin-left: 5rem;
+  background-color: #36363662;
   width: 15rem;
   height: 10rem;
   margin-top: 5rem;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.774), 0 0 6px rgba(0, 0, 0, 0.05);
   text-align: center;
+  color: #2ecc71;
 }
 
 #link_card h4 {
@@ -21,10 +44,10 @@
   box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0);
 }
 
-body {
+/* body {
   background-color: rgba(109, 109, 109, 0.589);
   overflow-x: hidden;
-}
+} */
 
 tbody {
   background-color: white;
@@ -114,8 +137,87 @@ tbody {
 }
 
 #admin-comp {
-  background-color: #201e1e;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: linear-gradient(to right, #b92b27, #1565c0);
+}
+
+.card {
+  margin-bottom: 20px;
+  border: none;
+}
+
+.box {
+  width: 500px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #191919b2;
+  text-align: center;
+  transition: 0.25s;
+  margin-top: 100px;
+}
+
+.box input[type='text'],
+.box input[type='password'] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 10px 10px;
+  width: 250px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+
+.box h1 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.box input[type='text']:focus,
+.box input[type='password']:focus {
+  width: 300px;
+  border-color: #2ecc71;
+}
+
+.box input[type='submit'] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.box input[type='submit']:hover {
+  background: #2ecc71;
+}
+
+.login-alert {
+  text-align: center;
+}
+
+body {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }

@@ -117,7 +117,7 @@ export const loginSuccess = (user) => {
 
 export const loginFailure = () => {
   return {
-    type: 'LOGIN_FAILURE',
+    type: 'LOGIN_FAILED',
   };
 };
 

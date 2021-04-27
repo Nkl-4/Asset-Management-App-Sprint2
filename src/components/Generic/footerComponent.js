@@ -10,7 +10,7 @@ export default function FooterComponent() {
 
   return (
     <div
-      className="navbar fixed-bottom navbar-expand-lg navbar-light bg-light shadow  bg-white rounded "
+      className="navbar fixed-bottom  shadow  rounded navbar-color"
       id="nav-footer"
     >
       <div className="d-flex" id="footerBox">
