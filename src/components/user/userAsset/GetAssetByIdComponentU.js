@@ -7,6 +7,8 @@ import * as assetActions from '../../../store/actions/User_AssetActions';
 class GetAssetByIdComponentU extends Component {
   componentDidMount() {
     const { assetActions, match } = this.props;
+
+    //call the fetchAssetId function in asset action
     assetActions.fetchAssetById(match.params.id);
   }
   render() {

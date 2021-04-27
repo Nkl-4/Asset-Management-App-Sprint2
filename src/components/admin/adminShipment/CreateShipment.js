@@ -7,6 +7,8 @@ import * as shipmentActions from '../../../store/actions/ShipmentAction';
 class CreateShipmentComponent extends Component {
   constructor(props) {
     super(props);
+
+    // to declared state as empty for the first time, it will get replaced once user enters the data
     this.state = {
       shipmentId: '',
       assetId: '',
@@ -17,19 +19,26 @@ class CreateShipmentComponent extends Component {
       shipmentDate: '',
       deliveryDate: '',
     };
+
+    // to bind handleInputChange function
     this.handleInputChange = this.handleInputChange.bind(this);
+    // to bind createShipment function
     this.createShipment = this.createShipment.bind(this);
   }
 
+  // to create Shipment
   handleInputChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+  // to create Shipment
   createShipment(e) {
+    // to prevent from default submit
     e.preventDefault();
 
+    //data which user enters
     let payload = {
       shipmentId: this.state.shipmentId,
       assetId: this.state.assetId,
@@ -42,11 +51,15 @@ class CreateShipmentComponent extends Component {
     };
 
     const { shipmentActions } = this.props;
+    // to call createShipment method in shipment actions
     shipmentActions.createShipment(payload);
+    // to call fetchAllShipment method in shipment actions
     this.props.shipmentActions.fetchAllShipment();
+    // direct the page after creation to the specifed location
     window.location.href = '/admin/shipment/all';
   }
 
+  // to clear the form after the submission of data
   clear() {
     this.setSate = {
       shipmentId: '',
@@ -61,6 +74,7 @@ class CreateShipmentComponent extends Component {
   }
 
   render() {
+    // to display date only till current date and disable future date
     let currentDate = () => {
       var today = new Date();
       var dd = today.getDate();

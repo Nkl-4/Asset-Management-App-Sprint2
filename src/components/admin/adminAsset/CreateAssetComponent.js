@@ -7,9 +7,8 @@ import * as assetActions from '../../../store/actions/Admin_AssetActions';
 class CreateAssetComponent extends Component {
   constructor(props) {
     super(props);
+    //declared state as empty for the first time, it will get replaced once user enters the data
     this.state = {
-      // assetId: '',
-
       whId: '',
       mgrId: '',
       location: '',
@@ -25,12 +24,14 @@ class CreateAssetComponent extends Component {
     this.createAsset = this.createAsset.bind(this);
   }
 
+  // to handle all changes
   handleInputChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+  //to handle only on submit click change
   handleSubmitChange() {
     alert('Asset created with Asset Id:' + this.state.assetId);
   }
@@ -38,9 +39,8 @@ class CreateAssetComponent extends Component {
   createAsset(e) {
     e.preventDefault();
 
+    //data which user enters
     let payload = {
-      // assetId: payload.assetId,
-
       whId: this.state.whId,
       mgrId: this.state.mgrId,
 
@@ -99,10 +99,6 @@ class CreateAssetComponent extends Component {
           <form onSubmit={this.createAsset}>
             <table>
               <tbody>
-                {/* <tr>
-                                <td><label>Asset Id:</label></td>
-                                <td><input type="text" placeholder="Asset Id" name="assetId" id="assetId" value={this.state.assetId} onChange={this.handleInputChange}></input></td>
-                            </tr> */}
                 <tr>
                   <td>
                     <label>Warehouse Id:</label>
@@ -182,7 +178,6 @@ class CreateAssetComponent extends Component {
                       <option value="FRAGILE">FRAGILE</option>
                     </select>
                   </td>
-                  {/* <td><input type="text" placeholder="text" name="type" id="type" value={this.state.type} onChange={this.handleInputChange}></input></td> */}
                 </tr>
                 <tr>
                   <td>

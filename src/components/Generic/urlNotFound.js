@@ -5,6 +5,7 @@ import { Redirect } from 'react-router';
 export default function urlNotFound() {
   const [redirect, setRedirect] = useState(false);
 
+  // Redirect to homepage after 3s
   useEffect(() => setTimeout(() => setRedirect(true), 4000), []);
 
   return redirect ? (

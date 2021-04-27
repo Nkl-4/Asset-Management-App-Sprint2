@@ -7,6 +7,7 @@ import * as assetAction from '../../../store/actions/Admin_AssetActions';
 class DeleteAssetComponent extends React.Component {
   componentDidMount() {
     const { assetAction, match } = this.props;
+    // calling redux function to fetch a particular id
     assetAction.fetchDeleteAsset(match.params.id);
   }
   render() {

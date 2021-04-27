@@ -7,6 +7,7 @@ import * as warehouseActions from '../../../store/actions/WarehouseActions';
 class DeleteWarehouseComponent extends React.Component {
   componentDidMount() {
     const { warehouseActions, match } = this.props;
+    // calling redux function to fetch a particular id
     warehouseActions.fetchDeleteWarehouse(match.params.id);
   }
   render() {

@@ -11,6 +11,7 @@ class ManagerViewShipmentComponent extends Component {
   }
 
   componentDidMount() {
+    // calling redux function to fetch all shipments
     this.props.shipmentActions.fetchAllShipment();
   }
 
@@ -28,9 +29,6 @@ class ManagerViewShipmentComponent extends Component {
                   <th>USER ID </th>
                   <th>SHIPMENT STATUS</th>
                   <th>SOURCE WAREHOUSE ID </th>
-                  {/* <th>Destination WareHouse ID </th>
-                                    <th>ShipmentDate </th>
-                                    <th>Delivery Date </th> */}
                   <th>VIEW SHIPMENT </th>
                   <th>EDIT SHIPMENT </th>
 
@@ -45,10 +43,6 @@ class ManagerViewShipmentComponent extends Component {
                     <td>{shipment.userId}</td>
                     <td>{shipment.status}</td>
                     <td>{shipment.sourceWhId}</td>
-                    {/* <td>{shipment.destWhId}</td>
-                                            <td>{shipment.shipmentDate}</td>
-                                            <td>{shipment.deliveryDate}</td>
-                                             */}
                     <td>
                       <Link
                         to={`/manager/shipment/view/${shipment.shipmentId}`}

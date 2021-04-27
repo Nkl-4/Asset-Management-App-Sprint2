@@ -9,6 +9,7 @@ class AssetListComponentWM extends React.Component {
     super();
   }
   componentDidMount() {
+    // calling redux function to fetch all assets
     this.props.assetActions.fetchAllAssets();
   }
 

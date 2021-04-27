@@ -7,6 +7,8 @@ import * as userActions from '../../../store/actions/AdminUserAction';
 class UserSignUpForm extends React.Component {
   constructor() {
     super();
+
+    //declared state as empty for the first time, it will get replaced once user enters the data
     this.state = {
       userName: '',
       userPassword: '',
@@ -16,15 +18,18 @@ class UserSignUpForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // to handle all changes
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
+  //to handle change only on submit click
   handleSubmit(event) {
     event.preventDefault();
 
+    //data that user enters
     const payload = {
       userName: this.state.userName,
       userPassword: this.state.userPassword,

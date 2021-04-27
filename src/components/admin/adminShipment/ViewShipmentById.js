@@ -7,6 +7,7 @@ import * as shipmentActions from '../../../store/actions/ShipmentAction';
 class ViewShipmentByIdComponent extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+    // to call the fetchShipmentById function in shipment action
     shipmentActions.fetchShipmentById(match.params.id);
   }
   render() {
@@ -47,8 +48,6 @@ class ViewShipmentByIdComponent extends React.Component {
               </tbody>
             </table>
           ) : (
-            // this.state.usersList.map((user, index) =>
-            //     <div>{user.userId} {user.userName} {user.userPassword} {user.userType} </div>)
             <div className="loader"></div>
           )}
           <br></br>

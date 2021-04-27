@@ -7,6 +7,7 @@ import * as assetActions from '../../../store/actions/Admin_AssetActions';
 class GetAssetByIdComponent extends Component {
   componentDidMount() {
     const { assetActions, match } = this.props;
+    // calling redux function to fetch a particular id
     assetActions.fetchAssetById(match.params.id);
   }
   render() {

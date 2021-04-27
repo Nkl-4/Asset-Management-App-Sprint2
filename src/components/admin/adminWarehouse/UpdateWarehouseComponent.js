@@ -8,6 +8,7 @@ class UpdateWarehouseComponent extends Component {
   constructor(props) {
     super(props);
 
+    // to get the existing data
     this.whId = React.createRef();
     this.mgrId = React.createRef();
     this.location = React.createRef();
@@ -20,12 +21,14 @@ class UpdateWarehouseComponent extends Component {
 
   componentDidMount() {
     const { warehouseActions, match } = this.props;
+    // calling redux function to fetch a particular id
     warehouseActions.fetchWarehouseById(match.params.id);
   }
 
   updateWarehouse(e) {
     e.preventDefault();
 
+    //data which user enters
     let payload = {
       whId: this.whId.current.value,
       mgrId: this.mgrId.current.value,

@@ -8,6 +8,7 @@ class UpdateShipmentComponent extends Component {
   constructor(props) {
     super(props);
 
+    // to call the data using reference
     this.shipmentId = React.createRef();
     this.assetId = React.createRef();
     this.userId = React.createRef();
@@ -17,18 +18,24 @@ class UpdateShipmentComponent extends Component {
     this.shipmentDate = React.createRef();
     this.deliveryDate = React.createRef();
 
+    // to bind updateShipment function
     this.updateShipment = this.updateShipment.bind(this);
   }
 
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+    // to call the fetchShipmentById function in shipment action
     shipmentActions.fetchShipmentById(match.params.id);
+    // to call the fetchAllShipment function in shipment action
     this.props.shipmentActions.fetchAllShipment();
   }
 
+  // to update shipment
   updateShipment(e) {
+    // to prevent from default submit
     e.preventDefault();
 
+    //data to be displayed to update
     let payload = {
       shipmentId: this.shipmentId.current.value,
       assetId: this.assetId.current.value,
@@ -41,11 +48,12 @@ class UpdateShipmentComponent extends Component {
     };
 
     const { shipmentActions } = this.props;
+    // to call updateShipment method in shipment actions
     shipmentActions.updateShipment(payload);
-    // this.props.history.push("/shipment/all");
   }
 
   render() {
+    // to display date only till current date and disable future date
     let currentDate = () => {
       var today = new Date();
       var dd = today.getDate();

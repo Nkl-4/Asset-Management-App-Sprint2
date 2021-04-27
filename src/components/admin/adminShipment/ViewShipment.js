@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as shipmentActions from '../../../store/actions/ShipmentAction';
 import { Button } from 'react-bootstrap';
-// import '../../css/style.css';
 
 class ViewShipmentComponent extends Component {
   constructor() {
@@ -12,6 +11,7 @@ class ViewShipmentComponent extends Component {
   }
 
   componentDidMount() {
+    // to call the fetchAllShipment function in shipment action
     this.props.shipmentActions.fetchAllShipment();
   }
 

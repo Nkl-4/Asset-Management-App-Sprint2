@@ -16,6 +16,7 @@ class GetAllUsersComponent extends Component {
   }
 
   componentDidMount() {
+    // calling redux function to fetch all assets
     this.props.userActions.fetchAllUsers();
   }
 

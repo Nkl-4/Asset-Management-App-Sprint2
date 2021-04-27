@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 class fetchUserDetailsComponent extends Component {
   componentDidMount() {
     const { userActions, match } = this.props;
+    // calling redux function to fetch a particular id
     userActions.fetchUserById(match.params.id);
   }
 

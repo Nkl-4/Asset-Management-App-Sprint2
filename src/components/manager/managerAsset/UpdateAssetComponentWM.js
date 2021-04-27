@@ -24,6 +24,7 @@ class UpdateAssetComponentWM extends Component {
 
   componentDidMount() {
     const { assetActions, match } = this.props;
+    // calling redux function to fetch all assets
     assetActions.fetchAssetById(match.params.id);
   }
 
@@ -34,10 +35,6 @@ class UpdateAssetComponentWM extends Component {
       assetId: this.assetId.current.value,
       whId: this.whId.current.value,
       mgrId: this.mgrId.current.value,
-      // location: this.location.current.value,
-      // subLocation: this.subLocation.current.value,
-      // state: this.state.current.value,
-      // country: this.country.current.value,
       model: this.model.current.value,
       type: this.type.current.value,
       manufacturer: this.manufacturer.current.value,
@@ -159,7 +156,6 @@ class UpdateAssetComponentWM extends Component {
                         <option value="FRAGILE">FRAGILE</option>
                       </select>
                     </td>
-                    {/* <td><input defaultValue={asset.type} type="text" ref={this.type} /></td> */}
                   </tr>
                   <tr>
                     <td>

@@ -12,7 +12,6 @@ export default function UsersListComponent() {
             color: 'white',
           }}
         >
-          {' '}
           USER DATABASE
         </h3>
       </center>

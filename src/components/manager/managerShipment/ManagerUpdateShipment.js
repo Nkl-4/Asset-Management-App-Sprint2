@@ -8,6 +8,7 @@ class ManagerUpdateShipmentComponent extends Component {
   constructor(props) {
     super(props);
 
+    // to get the existing data
     this.shipmentId = React.createRef();
     this.assetId = React.createRef();
     this.userId = React.createRef();
@@ -22,6 +23,8 @@ class ManagerUpdateShipmentComponent extends Component {
 
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+
+    // calling redux function to fetch a particular id
     shipmentActions.fetchShipmentById(match.params.id);
     this.props.shipmentActions.fetchAllShipment();
   }
@@ -29,6 +32,7 @@ class ManagerUpdateShipmentComponent extends Component {
   updateShipment(e) {
     e.preventDefault();
 
+    //data which user enters
     let payload = {
       shipmentId: this.shipmentId.current.value,
       assetId: this.assetId.current.value,
@@ -47,6 +51,7 @@ class ManagerUpdateShipmentComponent extends Component {
   }
 
   render() {
+    // to display date only till current date and disable future date
     let currentDate = () => {
       var today = new Date();
       var dd = today.getDate();
@@ -150,7 +155,6 @@ class ManagerUpdateShipmentComponent extends Component {
                         </option>
                       </select>
                     </td>
-                    {/* <td><input defaultValue={shipment.status} type="text" ref={this.status} /></td> */}
                   </tr>
 
                   <tr>
@@ -241,7 +245,6 @@ function mapStateToProps(state) {
   return {
     shipment: state.managershipmentReducer.shipments,
     updateShipment: state.managershipmentReducer.updateShipment,
-    // shipment: state.managershipmentReducer.shipment
   };
 }
 

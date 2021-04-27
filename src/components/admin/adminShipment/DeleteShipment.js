@@ -7,10 +7,14 @@ import * as shipmentActions from '../../../store/actions/ShipmentAction';
 class DeleteShipmentComponent extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+
+    // to call fetchDeleteShipment method in shipment actions
     shipmentActions.fetchDeleteShipment(match.params.id);
   }
   render() {
     const { shipments } = this.props;
+
+    // to redirect after deleting shipment
     return (window.location.href = '/admin/shipment/all');
   }
 }

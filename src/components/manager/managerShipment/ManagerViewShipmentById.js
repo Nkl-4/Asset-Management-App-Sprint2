@@ -7,6 +7,7 @@ import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction'
 class ManagerViewShipmentByIdComponent extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+    // calling redux function to fetch a particular id
     shipmentActions.fetchShipmentById(match.params.id);
   }
   render() {
@@ -46,8 +47,6 @@ class ManagerViewShipmentByIdComponent extends React.Component {
               </tbody>
             </table>
           ) : (
-            // this.state.usersList.map((user, index) =>
-            //     <div>{user.userId} {user.userName} {user.userPassword} {user.userType} </div>)
             <div className="loader"></div>
           )}
           <br></br>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 class WarehouseListComponent extends Component {
   componentDidMount() {
+    // calling redux function to fetch all warehouses
     this.props.warehouseActions.fetchAllWarehouses();
   }
 

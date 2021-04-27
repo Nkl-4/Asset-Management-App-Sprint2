@@ -7,8 +7,8 @@ import * as warehouseActions from '../../../store/actions/WarehouseActions';
 class CreateWarehouseComponent extends Component {
   constructor(props) {
     super(props);
+    //declared state as empty for the first time, it will get replaced once user enters the data
     this.state = {
-      //whId: '',
       mgrId: '',
       location: '',
       subLocation: '',
@@ -19,6 +19,7 @@ class CreateWarehouseComponent extends Component {
     this.createWarehouse = this.createWarehouse.bind(this);
   }
 
+  // to handle all changes
   handleInputChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -28,8 +29,8 @@ class CreateWarehouseComponent extends Component {
   createWarehouse(e) {
     e.preventDefault();
 
+    //data which user enters
     let payload = {
-      //whId: this.state.whId,
       mgrId: this.state.mgrId,
       location: this.state.location,
       subLocation: this.state.subLocation,

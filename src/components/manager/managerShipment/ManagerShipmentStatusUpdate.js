@@ -6,6 +6,8 @@ import * as shipmentActions from '../../../store/actions/Manager_ShipmentAction'
 class ManagerShipmentStatusUpdate extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+
+    // calling redux function to fetch a particular id
     shipmentActions.ShipmentUpdateStatus(match.params.id);
     this.props.shipmentActions.fetchAllShipment();
   }
@@ -25,7 +27,6 @@ class ManagerShipmentStatusUpdate extends React.Component {
           Cancel
         </button>
       </div>
-      // window.location.href = "/shipment/all"   <Link to={`/shipment/status/update/${shipment.shipmentId}`}>
     );
   }
 }

@@ -7,6 +7,7 @@ import * as warehouseActions from '../../../store/actions/WarehouseActions';
 class WarehousebyIdComponent extends Component {
   componentDidMount() {
     const { warehouseActions, match } = this.props;
+    // calling redux function to fetch a particular id
     warehouseActions.fetchWarehouseById(match.params.id);
   }
   render() {

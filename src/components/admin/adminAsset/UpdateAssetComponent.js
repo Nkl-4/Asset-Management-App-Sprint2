@@ -7,7 +7,7 @@ import * as assetActions from '../../../store/actions/Admin_AssetActions';
 class UpdateAssetComponent extends Component {
   constructor(props) {
     super(props);
-
+    // to get the existing data
     this.assetId = React.createRef();
     this.whId = React.createRef();
     this.mgrId = React.createRef();
@@ -24,12 +24,14 @@ class UpdateAssetComponent extends Component {
 
   componentDidMount() {
     const { assetActions, match } = this.props;
+    // calling redux function to fetch a particular id
     assetActions.fetchAssetById(match.params.id);
   }
 
   updateAsset(e) {
     e.preventDefault();
 
+    //data which user enters
     let payload = {
       assetId: this.assetId.current.value,
       whId: this.whId.current.value,
@@ -157,7 +159,6 @@ class UpdateAssetComponent extends Component {
                         <option value="FRAGILE">FRAGILE</option>
                       </select>
                     </td>
-                    {/* <td><input defaultValue={asset.type} type="text" ref={this.type} /></td> */}
                   </tr>
                   <tr>
                     <td>

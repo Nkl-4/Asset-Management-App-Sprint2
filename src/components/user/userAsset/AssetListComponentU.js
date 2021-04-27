@@ -9,6 +9,7 @@ class AssetListComponentU extends React.Component {
     super();
   }
   componentDidMount() {
+    // calling redux function to fetch all assets
     this.props.assetActions.fetchAllAssets();
   }
 
@@ -26,7 +27,6 @@ class AssetListComponentU extends React.Component {
                 color: 'white',
               }}
             >
-              {' '}
               ASSET DETAILS
             </h3>
           </center>
