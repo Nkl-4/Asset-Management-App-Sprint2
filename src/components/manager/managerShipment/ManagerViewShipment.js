@@ -66,7 +66,7 @@ class ManagerViewShipmentComponent extends Component {
 
                     <td>
                       <Link
-                        to={`/shipment/status/update/${shipment.shipmentId}`}
+                        to={`/manager/shipment/status/update/${shipment.shipmentId}`}
                         disabled={
                           shipment.status === 'DELIVERED' ? true : false
                         }

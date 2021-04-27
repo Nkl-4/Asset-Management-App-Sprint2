@@ -44,7 +44,7 @@ import AssetListComponentU from './components/user/userAsset/AssetListComponentU
 import GetAssetByIdComponentU from './components/user/userAsset/GetAssetByIdComponentU';
 import UserViewShipment from './components/user/userShipment/UserViewShipment';
 import UserViewShipmentById from './components/user/userShipment/UserViewShipmentById';
-import urlNotFound from 'components/Generic/urlNotFound';
+import urlNotFound from './components/Generic/urlNotFound';
 
 var currentUser = localStorage.getItem('user_type');
 

@@ -26,42 +26,43 @@ class AssetListComponentWM extends React.Component {
                 color: 'white',
               }}
             >
-              {' '}
               ASSET DETAILS
             </h3>
           </center>
           <br></br>
           {this.props.assets !== undefined ? (
-            <table className="table table-striped table table-bordered table table-hover">
-              <thead className="thead-dark">
-                <tr>
-                  <th>Asset Id</th>
-                  <th>Warehouse ID</th>
-                  <th>Type</th>
-                  <th>View Details</th>
-                  <th>Update Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.assets.map((asset) => (
-                  <tr key={asset.assetId}>
-                    <td>{asset.assetId}</td>
-                    <td>{asset.warehouse.whId}</td>
-                    <td>{asset.type}</td>
-                    <td>
-                      <Link to={`/manager/asset/get/${asset.assetId}`}>
-                        View
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to={`/manager/asset/update/${asset.assetId}`}>
-                        Update
-                      </Link>
-                    </td>
+            <div className="table-responsive">
+              <table className="table table-striped table table-bordered table table-hover">
+                <thead className="thead-dark">
+                  <tr>
+                    <th>Asset Id</th>
+                    <th>Warehouse ID</th>
+                    <th>Type</th>
+                    <th>View Details</th>
+                    <th>Update Details</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {this.props.assets.map((asset) => (
+                    <tr key={asset.assetId}>
+                      <td>{asset.assetId}</td>
+                      <td>{asset.warehouse.whId}</td>
+                      <td>{asset.type}</td>
+                      <td>
+                        <Link to={`/manager/asset/get/${asset.assetId}`}>
+                          View
+                        </Link>
+                      </td>
+                      <td>
+                        <Link to={`/manager/asset/update/${asset.assetId}`}>
+                          Update
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <div className="loader"></div>
           )}
