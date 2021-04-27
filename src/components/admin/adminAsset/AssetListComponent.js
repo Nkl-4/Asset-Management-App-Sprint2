@@ -82,6 +82,7 @@ class AssetListComponent extends React.Component {
     );
   }
 }
+
 function mapStateToProps(state) {
   return { assets: state.adminassetReducer.assets };
 }

@@ -6,6 +6,7 @@ import image2 from '../../img/hp_bg_2.jpg';
 import image3 from '../../img/shipment4.jpg';
 export class LandingComponent extends Component {
   render() {
+    // get active windows length and width using JQuery
     let ht = $(window).height();
     let wh = $(window).width();
     return (

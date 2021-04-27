@@ -111,7 +111,7 @@ class UpdateWarehouseComponent extends Component {
                         defaultValue={warehouse.address.location}
                         type="text"
                         ref={this.location}
-                        pattern="^[a-zA-Z]+$"
+                        pattern="^[a-zA-Z ]+$"
                         title="Enter Character only"
                         required
                       />
@@ -127,7 +127,7 @@ class UpdateWarehouseComponent extends Component {
                         defaultValue={warehouse.address.subLocation}
                         type="text"
                         ref={this.subLocation}
-                        pattern="^[a-zA-Z]+$"
+                        pattern="^[a-zA-Z ]+$"
                         title="Enter Character only"
                         required
                       />
@@ -143,7 +143,7 @@ class UpdateWarehouseComponent extends Component {
                         defaultValue={warehouse.address.state}
                         type="text"
                         ref={this.state}
-                        pattern="^[a-zA-Z]+$"
+                        pattern="^[a-zA-Z ]+$"
                         title="Enter Character only"
                         required
                       />
@@ -159,7 +159,7 @@ class UpdateWarehouseComponent extends Component {
                         defaultValue={warehouse.address.country}
                         type="text"
                         ref={this.country}
-                        pattern="^[a-zA-Z]+$"
+                        pattern="^[a-zA-Z ]+$"
                         title="Enter Character only"
                         required
                       />

@@ -7,6 +7,7 @@ import * as shipmentActions from '../../../store/actions/User_ShipmentAction';
 class UserViewShipmentByIdComponent extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
+    // fetch shipment from redux
     shipmentActions.fetchShipmentById(match.params.id);
   }
   render() {
@@ -17,6 +18,7 @@ class UserViewShipmentByIdComponent extends React.Component {
           <h3>SHIPMENT DETAIL</h3>
           <br></br>
           {shipments !== undefined ? (
+            // responsive table
             <table className="table table-striped table table-bordered table table-hover">
               <thead className="p-3 mb-2 bg-info text-white">
                 <tr>
@@ -46,8 +48,6 @@ class UserViewShipmentByIdComponent extends React.Component {
               </tbody>
             </table>
           ) : (
-            // this.state.usersList.map((user, index) =>
-            //     <div>{user.userId} {user.userName} {user.userPassword} {user.userType} </div>)
             <div className="loader"></div>
           )}
           <br></br>

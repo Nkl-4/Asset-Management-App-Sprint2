@@ -11,6 +11,7 @@ export default function ReportComponent() {
 
   const apiUrl = 'http://localhost:8090';
 
+  // fetch data for given month & year
   const getData = (monthYear) => {
     setMonth(monthYear);
     const monYr = monthYear.split('-');
@@ -29,10 +30,11 @@ export default function ReportComponent() {
     console.log(count);
   }, [data]);
 
+  //print pdf function
   const exportPDF = () => {
     const unit = 'pt';
-    const size = 'A4';
-    const orientation = 'portrait';
+    const size = 'A4'; // page size
+    const orientation = 'portrait'; // landscape available
 
     const marginLeft = 40;
     const doc = new jsPDF(orientation, unit, size);
@@ -72,6 +74,7 @@ export default function ReportComponent() {
 
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
+    // export file name
     doc.save(`Report-${month}.pdf`);
   };
 
@@ -144,6 +147,7 @@ export default function ReportComponent() {
             </h4>
           )}
         </div>
+        {/* Display button if data != empty */}
         {data.length > 0 && (
           <button className="btn-primary" onClick={() => exportPDF()}>
             Generate Report

@@ -17,8 +17,10 @@ class LoginFormComponent extends Component {
     this.loginAction = this.loginAction.bind(this);
   }
   componentDidMount() {
+    // fetch value from local storage of browser
     let currentUser = localStorage.getItem('user_type');
 
+    // check for user type
     if (currentUser !== undefined) {
       if (currentUser === 'ADMIN')
         return (window.location.href = '/admin/home');
@@ -37,6 +39,7 @@ class LoginFormComponent extends Component {
 
   loginAction(e) {
     e.preventDefault();
+    // pass userName & password for auth
     const payload = {
       username: this.state.userName,
       password: this.state.userPassword,
@@ -54,7 +57,6 @@ class LoginFormComponent extends Component {
                 <form onSubmit={this.loginAction} className="box">
                   <h1>Login</h1>
                   <p className="text-muted">
-                    {' '}
                     Please enter your UserId and password!
                   </p>
                   <input
@@ -72,6 +74,7 @@ class LoginFormComponent extends Component {
                   <input type="submit" name="" value="Login" href="#" />
                 </form>
               </div>
+              {/* Alert box */}
               <Alert
                 variant="danger"
                 style={{

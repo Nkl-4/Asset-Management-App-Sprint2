@@ -109,7 +109,7 @@ class CreateWarehouseComponent extends Component {
                       id="location"
                       value={this.state.location}
                       onChange={this.handleInputChange}
-                      pattern="^[a-zA-Z]+$"
+                      pattern="^[a-zA-Z ]+$"
                       title="Enter Character only"
                       required
                     ></input>
@@ -128,7 +128,7 @@ class CreateWarehouseComponent extends Component {
                       id="subLocation"
                       value={this.state.subLocation}
                       onChange={this.handleInputChange}
-                      pattern="^[a-zA-Z]+$"
+                      pattern="^[a-zA-Z ]+$"
                       title="Enter Character only"
                       required
                     ></input>
@@ -147,7 +147,7 @@ class CreateWarehouseComponent extends Component {
                       id="state"
                       value={this.state.state}
                       onChange={this.handleInputChange}
-                      pattern="^[a-zA-Z]+$"
+                      pattern="^[a-zA-Z ]+$"
                       title="Enter Character only"
                       required
                     ></input>
@@ -166,7 +166,7 @@ class CreateWarehouseComponent extends Component {
                       id="country"
                       value={this.state.country}
                       onChange={this.handleInputChange}
-                      pattern="^[a-zA-Z]+$"
+                      pattern="^[a-zA-Z ]+$"
                       title="Enter Character only"
                       required
                     ></input>

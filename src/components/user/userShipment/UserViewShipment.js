@@ -10,6 +10,7 @@ class UserViewShipmentComponent extends Component {
   }
 
   componentDidMount() {
+    // fetch all shipment from redux
     this.props.shipmentActions.fetchAllShipment();
   }
 
@@ -27,9 +28,6 @@ class UserViewShipmentComponent extends Component {
                   <th>USER ID </th>
                   <th>SHIPMENT STATUS</th>
                   <th>SOURCE WAREHOUSE ID </th>
-                  {/* <th>Destination WareHouse ID </th>
-                                <th>ShipmentDate </th>
-                                <th>Delivery Date </th> */}
                   <th>VIEW SHIPMENT </th>
                 </tr>
               </thead>
@@ -41,10 +39,6 @@ class UserViewShipmentComponent extends Component {
                     <td>{shipment.userId}</td>
                     <td>{shipment.status}</td>
                     <td>{shipment.sourceWhId}</td>
-                    {/* <td>{shipment.destWhId}</td>
-                                        <td>{shipment.shipmentDate}</td>
-                                        <td>{shipment.deliveryDate}</td>
-                                         */}
                     <td>
                       <Link to={`/user/shipment/view/${shipment.shipmentId}`}>
                         View
@@ -58,6 +52,7 @@ class UserViewShipmentComponent extends Component {
             <div className="loader"></div>
           )}
           <div className="text-center">
+            {/* redirect to homepage */}
             <Link to="/homeRedirect">
               <button type="button" className="btn btn-secondary">
                 Go Back
