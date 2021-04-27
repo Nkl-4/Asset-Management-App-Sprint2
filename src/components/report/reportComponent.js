@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 export default function ReportComponent() {
   const [data, setData] = useState([]);
-  //   const [monthYear, setMonthYear] = useState('');
+  const [count, setCount] = useState(0);
 
   const apiUrl = 'http://localhost:8090';
 
@@ -21,6 +21,12 @@ export default function ReportComponent() {
       setData(resp.data);
     });
   };
+
+  useEffect(() => {
+    let newCount = count + 1;
+    setCount(newCount);
+    console.log(count);
+  }, [data]);
 
   const exportPDF = () => {
     const unit = 'pt';

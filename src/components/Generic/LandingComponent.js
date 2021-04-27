@@ -17,7 +17,7 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image1}
                 alt="First slide"
-                height={ht * 0.85}
+                height={ht * 0.89}
                 width={wh}
               />
               <Carousel.Caption style={{ color: 'white' }}>
@@ -34,7 +34,7 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image2}
                 alt="Second slide"
-                height={ht * 0.85}
+                height={ht * 0.89}
                 width={wh}
               />
               <Carousel.Caption>
@@ -51,7 +51,7 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image3}
                 alt="Third slide"
-                height={ht * 0.85}
+                height={ht * 0.89}
                 width={wh}
               />
               <Carousel.Caption>

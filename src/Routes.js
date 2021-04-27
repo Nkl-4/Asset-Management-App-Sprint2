@@ -44,6 +44,7 @@ import AssetListComponentU from './components/user/userAsset/AssetListComponentU
 import GetAssetByIdComponentU from './components/user/userAsset/GetAssetByIdComponentU';
 import UserViewShipment from './components/user/userShipment/UserViewShipment';
 import UserViewShipmentById from './components/user/userShipment/UserViewShipmentById';
+import urlNotFound from 'components/Generic/urlNotFound';
 
 var currentUser = localStorage.getItem('user_type');
 
@@ -102,13 +103,11 @@ const Routes = () => (
       exact
     />
 
-    <Route path={'/admin/shipment/delete/:id'} exact>
-      {currentUser === 'ADMIN' ? (
-        <DeleteShipmentComponent />
-      ) : (
-        <NotAuthorizedPage />
-      )}
-    </Route>
+    <Route
+      path={'/admin/shipment/delete/:id'}
+      component={DeleteShipmentComponent}
+      exact
+    />
 
     <Route path={'/admin/shipment/add'} exact>
       {currentUser === 'ADMIN' ? (
@@ -276,6 +275,7 @@ const Routes = () => (
       component={UserViewShipmentById}
       exact
     />
+    <Route component={urlNotFound} />
   </Switch>
 );
 

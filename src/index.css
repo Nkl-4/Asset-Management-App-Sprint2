@@ -10,21 +10,19 @@
   /* 10 */
   margin-top: 5rem;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-   /* text-align: center; */
-   
+  /* text-align: center; */
 }
 #bottom {
   position: absolute;
   bottom: 0.5em;
-  left: 1.5em;;
+  left: 1.5em;
   text-align: center;
 }
 
 #link_card img {
   width: 70%;
-  margin-left: auto;  
-  margin-right: auto;  
- 
+  margin-left: auto;
+  margin-right: auto;
 }
 #link_card h4 {
   margin-top: 20%;
@@ -144,7 +142,7 @@ tbody {
   max-width: 100%;
   height: auto;
  } */
- body {
+body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -217,4 +215,71 @@ tbody {
 
 .login-alert {
   text-align: center;
+}
+
+/* 404 Page */
+@import url(https://fonts.googleapis.com/css?family=opensans:500);
+.c {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  max-height: 700px;
+  overflow: hidden;
+}
+.c {
+  text-align: center;
+  display: block;
+  position: relative;
+  width: 80%;
+  margin: 100px auto;
+}
+._404 {
+  font-size: 220px;
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+  height: 250px;
+  letter-spacing: 15px;
+}
+
+.text {
+  font-size: 70px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin: 19px 0px 0px 0px;
+  /* top: 256.301px; */
+  z-index: 3;
+  width: 100%;
+  line-height: 1.2em;
+  display: inline-block;
+}
+
+.btn {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: inline-block;
+  width: 358px;
+  padding: 5px;
+  z-index: 5;
+  font-size: 25px;
+  margin: 0 auto;
+  color: #33cc99;
+  text-decoration: none;
+  margin-right: 10px;
+}
+.right {
+  float: right;
+  width: 60%;
+}
+
+hr {
+  padding: 0;
+  border: none;
+  border-top: 5px solid #fff;
+  color: #fff;
+  text-align: center;
+  margin: 0px auto;
+  width: 420px;
+  height: 10px;
+  z-index: -10;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router';
+import image1 from '../../img/notauth.jpg';
 
 export default function NotAuthorizedPage() {
   const [redirect, setRedirect] = useState(false);
@@ -12,7 +13,7 @@ export default function NotAuthorizedPage() {
   ) : (
     <div>
       <center>
-        <h2>Not Authorized</h2>
+        <img src={image1} />
       </center>
     </div>
   );
