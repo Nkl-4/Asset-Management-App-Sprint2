@@ -55,7 +55,7 @@ class UpdateAssetComponentWM extends Component {
     }
 
     return (
-      <div className="AssetListComponent">
+      <div className="AssetListComponent container-fluid">
         <br></br>
         <br></br>
         <center>
@@ -70,7 +70,11 @@ class UpdateAssetComponentWM extends Component {
           </h3>
         </center>
         {asset !== undefined ? (
-          <div className="container-fluid" id="updateasset" align="center">
+          <div
+            className="container-fluid table-responsive"
+            id="updateasset"
+            align="center"
+          >
             <form onSubmit={this.updateAsset}>
               <table>
                 <tbody>
@@ -98,6 +102,8 @@ class UpdateAssetComponentWM extends Component {
                         defaultValue={asset.warehouse.whId}
                         type="text"
                         ref={this.whId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -112,6 +118,8 @@ class UpdateAssetComponentWM extends Component {
                         defaultValue={asset.warehouse.mgrId}
                         type="text"
                         ref={this.mgrId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -163,6 +171,8 @@ class UpdateAssetComponentWM extends Component {
                         defaultValue={asset.manufacturer}
                         type="text"
                         ref={this.manufacturer}
+                        pattern="^[a-zA-Z]+$"
+                        title="Enter Character only"
                         required
                       />
                     </td>

@@ -1,39 +1,31 @@
-.navbar-color {
-  background-color: rgb(255, 255, 255);
-  width: 100vmax;
-}
-
-.navbar a {
-  color: black;
-  text-decoration: none;
-}
-
-.navbar a:hover {
-  font-size: 120%;
-  text-decoration: none;
-}
-
-#appTitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 120%;
-  text-decoration: none;
-}
-
 .navbar a:hover {
   color: #f1356d;
 }
 
 #link_card {
   margin-left: 5rem;
-  background-color: #36363662;
-  width: 15rem;
-  height: 10rem;
+  width: 13.5rem;
+  /* 15 */
+  height: 13rem;
+  /* 10 */
   margin-top: 5rem;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.774), 0 0 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+   /* text-align: center; */
+   
+}
+#bottom {
+  position: absolute;
+  bottom: 0.5em;
+  left: 1.5em;;
   text-align: center;
-  color: #2ecc71;
 }
 
+#link_card img {
+  width: 70%;
+  margin-left: auto;  
+  margin-right: auto;  
+ 
+}
 #link_card h4 {
   margin-top: 20%;
 }
@@ -44,10 +36,10 @@
   box-shadow: 0px 0px 999px 999px rgba(255, 255, 255, 0);
 }
 
-/* body {
-  background-color: rgba(109, 109, 109, 0.589);
+body {
+  /* background-color: rgba(109, 109, 109, 0.589); */
   overflow-x: hidden;
-} */
+}
 
 tbody {
   background-color: white;
@@ -136,13 +128,23 @@ tbody {
   width: 100%;
 }
 
-#admin-comp {
+/* #admin-comp {
+  background-color: #201e1e;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
+} */
 
-body {
+/* @media (max-width: 576px) {
+  #loginform form {
+    padding: 50px 20px;
+  }
+}
+.img-fluid{
+  max-width: 100%;
+  height: auto;
+ } */
+ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -215,9 +217,4 @@ body {
 
 .login-alert {
   text-align: center;
-}
-
-body {
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
 }

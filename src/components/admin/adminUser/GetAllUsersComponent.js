@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as userActions from '../../../store/actions/AdminUserAction';
 import Axios from 'axios';
@@ -37,52 +38,62 @@ class GetAllUsersComponent extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Alert variant={'success'} show={this.state.visible}>
-          User Deleted
-        </Alert>
-        <table
-          className="table table-striped table-sm5  table-hover "
-          border="1"
-        >
-          <thead className="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>Uid</th>
-              <th>User Type</th>
-              <th>Options</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.users !== undefined &&
-              this.props.users.map((user) => (
-                <tr key={user.userId}>
-                  <td>{user.userId}</td>
-                  <td>{user.userName}</td>
-                  <td>{user.userType}</td>
-                  <td>
-                    <a href={`/admin/getUserByid/${user.userId}`}>
+      <div className="GetAllUsersComponent container-fluid">
+        <div className="container-fluid table-responsive">
+          <Alert variant={'success'} show={this.state.visible}>
+            User Deleted
+          </Alert>
+          <table
+            className="table table-striped table-sm5  table-hover "
+            border="1"
+          >
+            <thead className="thead-dark">
+              <tr>
+                <th>ID</th>
+                <th>Uid</th>
+                <th>User Type</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.users !== undefined &&
+                this.props.users.map((user) => (
+                  <tr key={user.userId}>
+                    <td>{user.userId}</td>
+                    <td>{user.userName}</td>
+                    <td>{user.userType}</td>
+                    <td>
+                      <a href={`/admin/getUserByid/${user.userId}`}>
+                        <button
+                          type="button"
+                          className="btn btn-outline-info btn-sm"
+                        >
+                          View
+                        </button>
+                      </a>
+                      &nbsp; &nbsp;
                       <button
                         type="button"
-                        className="btn btn-outline-info btn-sm"
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => this.handleDeleteUser(user.userId)}
+                        disabled={user.userType === 'ADMIN' ? true : false}
                       >
-                        View
+                        Delete
                       </button>
-                    </a>
-                    &nbsp; &nbsp;
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm"
-                      onClick={() => this.handleDeleteUser(user.userId)}
-                      disabled={user.userType === 'ADMIN' ? true : false}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="text-center">
+          <Link to="/admin/home">
+            <button type="button" className="btn btn-secondary">
+              Go Back
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }

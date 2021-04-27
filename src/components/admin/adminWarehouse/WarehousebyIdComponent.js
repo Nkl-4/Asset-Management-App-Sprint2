@@ -12,8 +12,8 @@ class WarehousebyIdComponent extends Component {
   render() {
     const { warehouse } = this.props;
     return (
-      <div className="WarehouseListComponent">
-        <div className="container-fluid">
+      <div className="WarehouseListComponent container-fluid">
+        <div className="container-fluid table-responsive">
           <br></br>
           <center>
             <h3

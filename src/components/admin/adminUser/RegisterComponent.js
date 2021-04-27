@@ -5,7 +5,7 @@ export class RegisterComponent extends Component {
   render() {
     return (
       <div>
-        <h2>Registration Page</h2>
+        <h2 align="center">REGISTRATION PAGE</h2>
         <UserSignUpForm />
       </div>
     );

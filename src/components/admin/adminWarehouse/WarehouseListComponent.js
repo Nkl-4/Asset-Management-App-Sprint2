@@ -11,8 +11,8 @@ class WarehouseListComponent extends Component {
 
   render() {
     return (
-      <div className="WarehouseListComponent">
-        <div className="container-fluid">
+      <div className="WarehouseListComponent container-fluid">
+        <div className="container-fluid table-responsive">
           <br></br>
           <center>
             <h3

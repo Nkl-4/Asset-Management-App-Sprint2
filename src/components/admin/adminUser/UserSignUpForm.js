@@ -37,65 +37,67 @@ class UserSignUpForm extends React.Component {
 
   render() {
     return (
-      <div
-        className="d-flex justify-content-center align-items-center"
-        style={{ height: '500px' }}
-      >
-        <div className="card form-group row signup-card">
-          <form onSubmit={this.handleSubmit} method="post">
-            <fieldset>
-              <div className="col-auto">
-                <label htmlFor="userName">
-                  <input
-                    className="input-group from-group "
-                    type="text"
-                    name="userName"
-                    placeholder="Username"
-                    onChange={this.handleChange}
-                    pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
-                    title="Min 5 character"
-                    required
-                  />
-                </label>
-              </div>
-              <div className="col-auto">
-                <label htmlFor="userPassword">
-                  <input
-                    className="input-group from-group "
-                    type="text"
-                    name="userPassword"
-                    placeholder="Password"
-                    onChange={this.handleChange}
-                    pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
-                    title="Min 5 character"
-                    required
-                  />
-                </label>
-              </div>
-              <div className="col-auto">
-                <label htmlFor="userType">
-                  <select
-                    className="form-control"
-                    name="userType"
-                    onChange={this.handleChange}
+      <div className="UserSignUpForm">
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ height: '500px' }}
+        >
+          <div className="card form-group row signup-card">
+            <form onSubmit={this.handleSubmit} method="post">
+              <fieldset>
+                <div className="col-auto">
+                  <label htmlFor="userName">
+                    <input
+                      className="input-group from-group "
+                      type="text"
+                      name="userName"
+                      placeholder="Username"
+                      onChange={this.handleChange}
+                      pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                      title="Min 5 character"
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="col-auto">
+                  <label htmlFor="userPassword">
+                    <input
+                      className="input-group from-group "
+                      type="text"
+                      name="userPassword"
+                      placeholder="Password"
+                      onChange={this.handleChange}
+                      pattern="^(?=.{5,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
+                      title="Min 5 character"
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="col-auto">
+                  <label htmlFor="userType">
+                    <select
+                      className="form-control"
+                      name="userType"
+                      onChange={this.handleChange}
+                    >
+                      <option value="GUSER">General User</option>
+                      <option value="WHMGR">Warehouse Manager</option>
+                      <option value="ADMIN">Admin</option>
+                    </select>
+                  </label>
+                </div>
+                <div className="col-auto">
+                  <button
+                    type="submit"
+                    value="Submit"
+                    className="btn btn-primary mb-3"
                   >
-                    <option value="GUSER">General User</option>
-                    <option value="WHMGR">Warehouse Manager</option>
-                    <option value="ADMIN">Admin</option>
-                  </select>
-                </label>
-              </div>
-              <div className="col-auto">
-                <button
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-primary mb-3"
-                >
-                  Sign Up
-                </button>
-              </div>
-            </fieldset>
-          </form>
+                    Sign Up
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     );

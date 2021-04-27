@@ -76,7 +76,7 @@ class CreateAssetComponent extends Component {
 
   render() {
     return (
-      <div className="CreateAssetComponent">
+      <div className="CreateAssetComponent container-fluid">
         <br></br>
         <br></br>
         <center>
@@ -91,7 +91,11 @@ class CreateAssetComponent extends Component {
           </h3>
         </center>
         <br></br>
-        <div className="container-fluid" id="createasset" align="center">
+        <div
+          className="container-fluid table-responsive"
+          id="createasset"
+          align="center"
+        >
           <form onSubmit={this.createAsset}>
             <table>
               <tbody>
@@ -112,6 +116,8 @@ class CreateAssetComponent extends Component {
                       id="whId"
                       value={this.state.whId}
                       onChange={this.handleInputChange}
+                      pattern="^[0-9]*$"
+                      title="Enter Number only"
                       required
                     ></input>
                   </td>
@@ -129,6 +135,8 @@ class CreateAssetComponent extends Component {
                       id="mgrId"
                       value={this.state.mgrId}
                       onChange={this.handleInputChange}
+                      pattern="^[0-9]*$"
+                      title="Enter Number only"
                       required
                     ></input>
                   </td>
@@ -189,6 +197,8 @@ class CreateAssetComponent extends Component {
                       id="manufacturer"
                       value={this.state.manufacturer}
                       onChange={this.handleInputChange}
+                      pattern="^[a-zA-Z]+$"
+                      title="Enter Character only"
                       required
                     ></input>
                   </td>

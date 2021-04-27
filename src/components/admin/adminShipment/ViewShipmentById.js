@@ -12,8 +12,8 @@ class ViewShipmentByIdComponent extends React.Component {
   render() {
     const { shipments } = this.props;
     return (
-      <div className="ViewShipment" align="center">
-        <div className="container-fluid">
+      <div className="ViewShipment container-fluid" align="center">
+        <div className="container-fluid table-responsive">
           <br></br>
           <h3>SHIPMENT DETAIL</h3>
           <br></br>

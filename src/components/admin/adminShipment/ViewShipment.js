@@ -17,8 +17,8 @@ class ViewShipmentComponent extends Component {
 
   render() {
     return (
-      <div className="ViewShipment">
-        <div className="container-fluid">
+      <div className="ViewShipment container-fluid">
+        <div className="container-fluid table-responsive">
           <br></br>
           <h3 align="center"> SHIPMENT DETAILS </h3>
           <br></br>

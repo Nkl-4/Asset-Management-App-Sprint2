@@ -23,6 +23,7 @@ class UpdateShipmentComponent extends Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
     shipmentActions.fetchShipmentById(match.params.id);
+    this.props.shipmentActions.fetchAllShipment();
   }
 
   updateShipment(e) {
@@ -42,10 +43,25 @@ class UpdateShipmentComponent extends Component {
     const { shipmentActions } = this.props;
     shipmentActions.updateShipment(payload);
     // this.props.history.push("/shipment/all");
-    this.props.shipmentActions.fetchAllShipment();
   }
 
   render() {
+    let currentDate = () => {
+      var today = new Date();
+      var dd = today.getDate();
+
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      today = yyyy + '-' + mm + '-' + dd;
+      return today;
+    };
     const { shipment, updateShipment } = this.props;
 
     if (updateShipment !== undefined && updateShipment) {
@@ -53,7 +69,7 @@ class UpdateShipmentComponent extends Component {
     }
 
     return (
-      <div className="UpdateShipment">
+      <div className="UpdateShipment container-fluid">
         <br></br>
         <center>
           <h3
@@ -68,7 +84,11 @@ class UpdateShipmentComponent extends Component {
         </center>
 
         {shipment !== undefined ? (
-          <div className="container-fluid" id="updateship" align="center">
+          <div
+            className="container-fluid table-responsive"
+            id="updateship"
+            align="center"
+          >
             <form onSubmit={this.updateShipment}>
               <table>
                 <tbody>
@@ -96,6 +116,8 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.assetId}
                         type="text"
                         ref={this.assetId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -110,6 +132,8 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.userId}
                         type="text"
                         ref={this.userId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -137,7 +161,6 @@ class UpdateShipmentComponent extends Component {
                         </option>
                       </select>
                     </td>
-                    {/* <td><input defaultValue={shipment.status} type="text" ref={this.status} /></td> */}
                   </tr>
 
                   <tr>
@@ -150,6 +173,8 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.sourceWhId}
                         type="text"
                         ref={this.sourceWhId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -164,6 +189,8 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.destWhId}
                         type="text"
                         ref={this.destWhId}
+                        pattern="^[0-9]*$"
+                        title="Enter Number only"
                         required
                       />
                     </td>
@@ -178,6 +205,7 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.shipmentDate}
                         type="date"
                         ref={this.shipmentDate}
+                        max={currentDate()}
                         required
                       />
                     </td>
@@ -192,6 +220,7 @@ class UpdateShipmentComponent extends Component {
                         defaultValue={shipment.deliveryDate}
                         type="date"
                         ref={this.deliveryDate}
+                        max={currentDate()}
                         required
                       />
                     </td>
@@ -222,7 +251,6 @@ function mapStateToProps(state) {
   return {
     shipment: state.shipmentReducer.shipments,
     updateShipment: state.shipmentReducer.updateShipment,
-    // shipments: state.shipmentReducer.shipment
   };
 }
 

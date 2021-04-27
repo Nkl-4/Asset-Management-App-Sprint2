@@ -46,7 +46,7 @@ class LoginFormComponent extends Component {
 
   render() {
     return (
-      <div className="loginPage">
+      <div className="loginPage ">
         <div className="container">
           <div className="row">
             <div className="col-md-6">

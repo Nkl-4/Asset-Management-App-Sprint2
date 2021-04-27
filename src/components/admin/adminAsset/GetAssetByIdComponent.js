@@ -12,8 +12,8 @@ class GetAssetByIdComponent extends Component {
   render() {
     const { asset } = this.props;
     return (
-      <div className="AssetListComponent">
-        <div className="container-fluid">
+      <div className="AssetListComponent container-fluid">
+        <div className="container-fluid table-responsive">
           <br></br>
           <br></br>
           <center>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
 import * as $ from 'jquery';
-import image1 from '../../img/hp_bg_1.jpg';
+import image1 from '../../img/createasset.jfif';
 import image2 from '../../img/hp_bg_2.jpg';
-import image3 from '../../img/hp_bg_3.jpg';
+import image3 from '../../img/shipment4.jpg';
 export class LandingComponent extends Component {
   render() {
     let ht = $(window).height();
@@ -17,12 +17,16 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image1}
                 alt="First slide"
-                height={ht * 0.89}
+                height={ht * 0.85}
                 width={wh}
               />
-              <Carousel.Caption style={{ color: 'black' }}>
-                <h3>Assets</h3>
-                <p>Add, Delete, Modify & ship Assets</p>
+              <Carousel.Caption style={{ color: 'white' }}>
+                <h2>
+                  <strong>ASSETS</strong>
+                </h2>
+                <p>
+                  <h3>Add, Delete, Modify & ship Assets</h3>
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -30,12 +34,16 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image2}
                 alt="Second slide"
-                height={ht * 0.89}
+                height={ht * 0.85}
                 width={wh}
               />
               <Carousel.Caption>
-                <h3>Warehouses</h3>
-                <p>Manage warehouse details</p>
+                <h2>
+                  <strong>WAREHOUSES</strong>
+                </h2>
+                <p>
+                  <h3>Manage warehouse details</h3>
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -43,12 +51,16 @@ export class LandingComponent extends Component {
                 className="d-block"
                 src={image3}
                 alt="Third slide"
-                height={ht * 0.89}
+                height={ht * 0.85}
                 width={wh}
               />
               <Carousel.Caption>
-                <h3>Shipments</h3>
-                <p>Track your shipments with ease.</p>
+                <h2>
+                  <strong>SHIPMENTS</strong>
+                </h2>
+                <p>
+                  <h3>Maintain your shipments with ease.</h3>
+                </p>
               </Carousel.Caption>
             </Carousel.Item>
           </Carousel>

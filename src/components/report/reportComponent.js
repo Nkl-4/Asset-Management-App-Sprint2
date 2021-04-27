@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Axios from 'axios';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { Link } from 'react-router-dom';
 
 export default function ReportComponent() {
   const [data, setData] = useState([]);
+  //   const [monthYear, setMonthYear] = useState('');
 
   const apiUrl = 'http://localhost:8090';
 
@@ -21,55 +21,21 @@ export default function ReportComponent() {
     });
   };
 
-  const exportPDF = () => {
-    const unit = 'pt';
-    const size = 'A4'; // Use A1, A2, A3 or A4
-    const orientation = 'portrait'; // portrait or landscape
-
-    const marginLeft = 40;
-    const doc = new jsPDF(orientation, unit, size);
-
-    doc.setFontSize(15);
-
-    const title = 'Shipment Report';
-    const headers = [
-      [
-        'Shipment ID',
-        'Asset ID',
-        'User ID',
-        'Status',
-        'Source WH ID',
-        'Destination WH ID',
-        'Shipment Date',
-        'Delivery Date',
-      ],
-    ];
-
-    const values = data.map((val) => [
-      val.shipmentId,
-      val.assetId,
-      val.userId,
-      val.status,
-      val.sourceWhId,
-      val.destWhId,
-      val.shipmentDate,
-      val.deliveryDate,
-    ]);
-
-    let content = {
-      startY: 50,
-      head: headers,
-      body: values,
-    };
-
-    doc.text(title, marginLeft, 40);
-    doc.autoTable(content);
-    doc.save('report.pdf');
-  };
-
   return (
-    <div>
-      <h3>Report Page</h3>
+    <div className="reportComponent">
+      <center>
+        <h3
+          style={{
+            backgroundColor: 'rgba(25, 55, 77)',
+            width: '150px',
+            color: 'white',
+          }}
+        >
+          REPORT{' '}
+        </h3>
+      </center>
+      <br></br>
+
       <div className="container border">
         <div className="row">
           <div className="col-auto">
@@ -122,12 +88,10 @@ export default function ReportComponent() {
             </h4>
           )}
         </div>
-        {data.length > 0 && (
-          <button className="btn-primary" onClick={() => exportPDF()}>
-            Generate Report
-          </button>
-        )}
       </div>
+      {/* <div class="text-center">
+                <Link to="/admin/home"><button type="button" class="btn btn-secondary">Go Back</button></Link>
+                    </div> */}
     </div>
   );
 }

@@ -39,8 +39,20 @@ class EditUserDataComponent extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Modify User Data</h2>
+      <div className="GetAllUsersComponent">
+        <center>
+          <h3
+            style={{
+              backgroundColor: 'rgba(25, 55, 77)',
+              width: '300px',
+              color: 'white',
+            }}
+          >
+            {' '}
+            MODIFY USER DATA
+          </h3>
+        </center>
+        <br></br>
         <div className="d-flex justify-content-center align-items-center">
           <form
             className="align-items-center justify-content-center border w-25 p-3"

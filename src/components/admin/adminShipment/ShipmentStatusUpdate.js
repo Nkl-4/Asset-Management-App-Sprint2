@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -9,15 +8,20 @@ class ShipmentStatusUpdate extends React.Component {
   componentDidMount() {
     const { shipmentActions, match } = this.props;
     shipmentActions.ShipmentUpdateStatus(match.params.id);
+    this.props.shipmentActions.fetchAllShipment();
   }
   render() {
+    // eslint-disable-next-line no-unused-vars
     const { shipments } = this.props;
     return <Redirect to="/admin/shipment/all" />;
   }
 }
 
 function mapStateToProps(state) {
-  return { shipments: state.shipmentReducer.shipmentStatus };
+  return {
+    shipments: state.shipmentReducer.shipmentStatus,
+    shipment: state.shipmentReducer.shipment,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

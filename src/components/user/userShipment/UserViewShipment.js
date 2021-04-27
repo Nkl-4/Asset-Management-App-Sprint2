@@ -15,8 +15,8 @@ class UserViewShipmentComponent extends Component {
 
   render() {
     return (
-      <div className="ViewShipment">
-        <div className="container-fluid">
+      <div className="ViewShipment container-fluid">
+        <div className="container-fluid table-responsive">
           <h3 align="center"> SHIPMENT DETAILS </h3>
           {this.props.shipment !== undefined ? (
             <table className="table table-striped table table-bordered table table-hover">

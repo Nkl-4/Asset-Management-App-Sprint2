@@ -79,7 +79,7 @@ class CreateShipmentComponent extends Component {
     };
 
     return (
-      <div className="CreateShipment">
+      <div className="CreateShipment container-fluid">
         <br></br>
         <center>
           <h3
@@ -93,7 +93,11 @@ class CreateShipmentComponent extends Component {
           </h3>
         </center>
         <br></br>
-        <div className="container-fluid" id="createship" align="center">
+        <div
+          className="container-fluid table-responsive"
+          id="createship"
+          align="center"
+        >
           <form onSubmit={this.createShipment}>
             <table>
               <tbody>
