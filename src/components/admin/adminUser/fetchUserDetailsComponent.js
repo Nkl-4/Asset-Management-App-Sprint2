@@ -27,53 +27,57 @@ class fetchUserDetailsComponent extends Component {
         </center>
         <br></br>
         <div className="container d-flex justify-content-center align-items-center">
-          <table
-            className="table table-striped table-sm felx-d justify-content-center align-items-center w-50 p-3 table-responsive"
-            border="1"
-          >
-            <thead className="thead-dark">
-              <tr>
-                <th>ID</th>
-                <th>Uid</th>
-                <th>Pass</th>
-                <th>User Type</th>
-                <th>Option</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                <tr key={user.userId}>
-                  <td>{user.userId}</td>
-                  <td>{user.userName}</td>
-                  <td>{user.userPassword}</td>
-                  <td>{user.userType}</td>
-                  <td>
-                    <Link
-                      to={{
-                        pathname: `/admin/modifyUser/${user.userId}`,
-                        userName: user.userName,
-                        userPassword: user.userPassword,
-                        userType: user.userType,
-                      }}
-                    >
-                      <button
-                        type="button"
-                        className="btn btn-outline-secondary btn-sm"
-                      >
-                        Edit
-                      </button>
-                    </Link>
-                  </td>
+          <div className="table-responsive">
+            <table className="table table-striped" border="1">
+              <thead className="thead-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Uid</th>
+                  <th>Pass</th>
+                  <th>User Type</th>
+                  <th>Option</th>
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {
+                  <tr key={user.userId}>
+                    <td>{user.userId}</td>
+                    <td>{user.userName}</td>
+                    <td>{user.userPassword}</td>
+                    <td>{user.userType}</td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: `/admin/modifyUser/${user.userId}`,
+                          userName: user.userName,
+                          userPassword: user.userPassword,
+                          userType: user.userType,
+                        }}
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-outline-secondary btn-sm"
+                          style={{ width: '50%' }}
+                        >
+                          Edit
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
         <br></br>
         <br></br>
         <div className="text-center">
           <Link to="/admin/usersList">
-            <button type="button" className="btn btn-secondary">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              style={{ width: '20%' }}
+            >
               Go Back
             </button>
           </Link>

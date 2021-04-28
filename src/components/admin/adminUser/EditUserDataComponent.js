@@ -62,6 +62,7 @@ class EditUserDataComponent extends Component {
             className="align-items-center justify-content-center border w-25 p-3"
             onSubmit={this.handleSubmit}
             method="post"
+            style={{ backgroundColor: 'white' }}
           >
             <fieldset>
               <div className="col-auto">
@@ -107,6 +108,7 @@ class EditUserDataComponent extends Component {
                   type="submit"
                   value="Submit"
                   className="btn btn-primary mb-3"
+                  style={{ width: '20%' }}
                 >
                   Modify
                 </button>

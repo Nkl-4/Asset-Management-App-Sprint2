@@ -40,7 +40,7 @@ class GetAllUsersComponent extends Component {
   render() {
     return (
       <div className="GetAllUsersComponent container-fluid">
-        <div className="container-fluid table-responsive">
+        <div className="container table-responsive">
           <Alert variant={'success'} show={this.state.visible}>
             User Deleted
           </Alert>
@@ -68,6 +68,7 @@ class GetAllUsersComponent extends Component {
                         <button
                           type="button"
                           className="btn btn-outline-info btn-sm"
+                          style={{ width: '20%' }}
                         >
                           View
                         </button>
@@ -78,6 +79,7 @@ class GetAllUsersComponent extends Component {
                         className="btn btn-outline-danger btn-sm"
                         onClick={() => this.handleDeleteUser(user.userId)}
                         disabled={user.userType === 'ADMIN' ? true : false}
+                        style={{ width: '20%' }}
                       >
                         Delete
                       </button>
